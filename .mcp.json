@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "ejemplo-stdio": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@ejemplo/mcp-server@1.0.0"],
+      "env": {
+        "API_KEY": "${EJEMPLO_API_KEY}"
+      }
+    },
+    "ejemplo-http": {
+      "type": "http",
+      "url": "https://mcp.ejemplo.com/mcp"
+    }
+  }
+}

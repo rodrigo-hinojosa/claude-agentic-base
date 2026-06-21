@@ -1,0 +1,7 @@
+# Archivos gitignored que Claude Code copia en cada worktree nuevo (sintaxis .gitignore).
+# Solo se copian los que coinciden con un patrón Y están gitignored; los rastreados nunca se duplican.
+# Se aplica con --worktree, la herramienta EnterWorktree y subagentes con isolation: worktree.
+# Ajusta o elimina según tu proyecto.
+.env
+.env.local
+config/secrets.json

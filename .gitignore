@@ -1,0 +1,23 @@
+# Artefactos del sistema operativo
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Editores
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Overrides locales de Claude Code (no se comparten con el equipo).
+# El archivo .example SÍ se versiona como plantilla.
+.claude/settings.local.json
+**/.claude/settings.local.json
+**/.claude/agent-memory-local/
+.claude/worktrees/
+CLAUDE.local.md
+
+# Entornos y dependencias (por si se añaden scripts o herramientas)
+.venv/
+node_modules/
+__pycache__/

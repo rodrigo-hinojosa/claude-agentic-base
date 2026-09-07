@@ -142,7 +142,7 @@ Escribe páginas del espacio configurado. Es el **único** modo que modifica Con
 
 En ambos casos, el contenido a publicar cumple el estándar de `rules.md` como si se hubiera generado (§3), incluida la regla 25 cuando aplica.
 
-**Qué cuenta como aprobación explícita.** El usuario vio el contenido exacto y la página destino, y aprobó en la conversación. Lo único que no se admite, en ningún caso, es escribir sin esa aprobación.
+**Qué cuenta como aprobación explícita.** No exige una pregunta nueva dentro de esta misma invocación: si quien te invoca —en particular el agente `atlassian-executor` ejecutando un plan conforme a [`.claude/contracts/write-plan.md`](../../contracts/write-plan.md)— ya trae el contenido exacto aprobado y sellado por hash, ese sello **es** la aprobación explícita; el usuario ya vio el contenido al sellarlo, y no hace falta preguntarle de nuevo (equivalencia que el contrato declara y esta skill reconoce). Lo único que no se admite, en ningún caso, es escribir sin que exista esa aprobación — preguntada en vivo por quien te invoque directamente, o ya sellada en un plan.
 
 ## Reglas de operación de la propia skill
 

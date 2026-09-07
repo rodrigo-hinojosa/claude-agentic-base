@@ -67,10 +67,10 @@
 
 **Naturaleza distinta**: estas tareas **escriben**, no recuperan. El respaldo no las contiene, y su criterio proviene de la clarificación del 07-09-2026 (los genéricos siguen vivos en la configuración personal; el retiro es deduplicación).
 
-- [ ] T018 [US3] Eliminar de `.claude/agents/` los archivos `arquitecto.md`, `documentador.md`, `revisor-codigo.md` y `revisor-proyecto.md`, declarando en el reporte que los tres primeros permanecen disponibles desde `~/.claude-personal/agents/` y que `revisor-proyecto` no tiene equivalente y queda recuperable solo desde el historial de git (escenario 4 de US3)
-- [ ] T019 [P] [US3] Reescribir la sección "Delegación a subagentes" de `.claude/rules/04-flujo-y-metodo.md` conforme a FR-012: delegar en los tres agentes de rol de la plantilla y citar los genéricos de revisión y exploración como capacidad de la configuración personal de quien opera, con esa procedencia declarada según `.claude/rules/09-punteros-y-replicas.md`; sin citar `revisor-proyecto`
-- [ ] T020 [P] [US3] Actualizar `README.md` conforme a FR-013: sección de agentes con los tres de rol, el patrón plan→gate→ejecución y el directorio `.claude/contracts/`; tabla "Qué incluye", lista de verificación y pasos de instalación sin presentar los genéricos como artefactos de la plantilla
-- [ ] T021 [US3] Verificar quickstart §7 y commitear US3 con mensaje `feat: retirar agentes genéricos y actualizar delegación`: `revisor-proyecto` en cero fuera de `specs/`, y cada ocurrencia de los otros tres acompañada de su procedencia declarada
+- [X] T018 [US3] Eliminar de `.claude/agents/` los archivos `arquitecto.md`, `documentador.md`, `revisor-codigo.md` y `revisor-proyecto.md`, declarando en el reporte que los tres primeros permanecen disponibles desde `~/.claude-personal/agents/` y que `revisor-proyecto` no tiene equivalente y queda recuperable solo desde el historial de git (escenario 4 de US3)
+- [X] T019 [P] [US3] Reescribir la sección "Delegación a subagentes" de `.claude/rules/04-flujo-y-metodo.md` conforme a FR-012: delegar en los tres agentes de rol de la plantilla y citar los genéricos de revisión y exploración como capacidad de la configuración personal de quien opera, con esa procedencia declarada según `.claude/rules/09-punteros-y-replicas.md`; sin citar `revisor-proyecto`
+- [X] T020 [P] [US3] Actualizar `README.md` conforme a FR-013: sección de agentes con los tres de rol, el patrón plan→gate→ejecución y el directorio `.claude/contracts/`; tabla "Qué incluye", lista de verificación y pasos de instalación sin presentar los genéricos como artefactos de la plantilla
+- [X] T021 [US3] Verificar quickstart §7 y commitear US3 con mensaje `feat: retirar agentes genéricos y actualizar delegación`: `revisor-proyecto` en cero fuera de `specs/`, y cada ocurrencia de los otros tres acompañada de su procedencia declarada
 
 **Checkpoint**: US3 completa. Detenerse y reportar al dueño.
 

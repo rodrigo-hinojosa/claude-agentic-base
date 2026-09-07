@@ -1,0 +1,24 @@
+:root {
+  color: #141414;
+  background: #ececea;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+.topbar { position: sticky; top: 0; z-index: 2; padding: 14px 20px; border-bottom: 1px solid #242424; background: #fff; }
+.topbar nav { display: flex; gap: 18px; overflow-x: auto; }
+.topbar a { color: inherit; }
+main { width: min(100% - 32px, 1180px); margin: 24px auto; padding: 30px; border: 1px solid #242424; background: #fff; }
+h1 { font-size: clamp(2.4rem, 7vw, 4.8rem); line-height: 1; }
+.diagram-shell, .wireframe { margin-top: 20px; overflow-x: auto; border: 1px solid #242424; background: #fff; }
+.tech-diagram { display: block; min-width: 860px; width: 100%; height: auto; }
+.tech-diagram text { fill: #141414; font-family: inherit; }
+.tech-diagram .zone { fill: #f7f7f5; stroke: #666662; stroke-dasharray: 7 5; }
+.tech-diagram .node { fill: #fff; stroke: #242424; stroke-width: 2; }
+.tech-diagram .message { stroke: #242424; stroke-width: 2; marker-end: url(#visual-arrow); }
+.wireframe { padding: 22px; background: #e4e4e1; }
+.screen { width: 326px; padding: 18px; border: 1px solid #242424; background: #fff; }
+.label { font-family: monospace; font-size: 0.75rem; font-weight: 700; }
+.system { margin-top: 12px; padding: 12px; border: 1px dashed #242424; background: #f7f7f5; }
+footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #b8b8b3; }

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revisión técnica ficticia · Arquitectura</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav aria-label="Ruta documental">
+      <a href="index.html" aria-current="page">00 · Arquitectura</a>
+      <a href="journey.html">01 · Recorrido</a>
+    </nav>
+  </header>
+  <main>
+    <p>00 · Arquitectura conceptual · datos ficticios</p>
+    <h1>Dos límites y una relación observable.</h1>
+    <p>La visualización responde dónde ocurre una operación sin importar nombres de dominio desde el starter.</p>
+    <section class="diagram-shell" aria-label="Contenedor desplazable del diagrama">
+      <svg class="tech-diagram" viewBox="0 0 900 360" role="img" aria-labelledby="visual-title visual-desc">
+        <title id="visual-title">Arquitectura ficticia de dos límites</title>
+        <desc id="visual-desc">Un canal local envía una solicitud a un servicio conceptual dentro de otro límite.</desc>
+        <defs>
+          <marker id="visual-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#242424"></path></marker>
+        </defs>
+        <rect class="zone" x="30" y="40" width="330" height="260" rx="8"></rect>
+        <text x="55" y="70" font-size="14">LÍMITE DE ENTRADA</text>
+        <rect class="node" x="90" y="130" width="210" height="80" rx="5"></rect>
+        <text x="195" y="175" text-anchor="middle" font-size="18">Canal ficticio</text>
+        <rect class="zone" x="540" y="40" width="330" height="260" rx="8"></rect>
+        <text x="565" y="70" font-size="14">LÍMITE DE SERVICIO</text>
+        <rect class="node" x="600" y="130" width="210" height="80" rx="5"></rect>
+        <text x="705" y="175" text-anchor="middle" font-size="18">Proceso conceptual</text>
+        <line class="message" x1="300" y1="170" x2="600" y2="170"></line>
+        <text x="450" y="153" text-anchor="middle" font-size="14">solicitar revisión</text>
+      </svg>
+    </section>
+    <footer>Siguiente: <a href="journey.html#estado">Recorrido low-fi</a></footer>
+  </main>
+</body>
+</html>

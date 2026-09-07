@@ -21,3 +21,8 @@ CLAUDE.local.md
 .venv/
 node_modules/
 __pycache__/
+
+# Secretos y configuración local
+.env
+.env.*
+*.log

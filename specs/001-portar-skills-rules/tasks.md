@@ -70,8 +70,8 @@
 
 **Independent Test**: la skill referencia solo archivos de este repo; invocarla en la rama produce staging acotado.
 
-- [ ] T025 [US4] Portar `$CIAM/.claude/skills/speckit-git-commit/SKILL.md` → `.claude/skills/speckit-git-commit/SKILL.md` adaptada (rutas a `.claude/rules/05-ramas-y-flujo-sdd.md` local; sin referencias a artefactos del origen; conservar staging acotado, bloqueo en main, detención ante secretos, sin push)
-- [ ] T026 [US4] Verificar que `jql-trampas.md` y los fixtures de prosa no contienen datos del tenant (scenarios 2 y 3 de US4); commit `feat: portar speckit-git-commit adaptada`
+- [X] T025 [US4] Portar `$CIAM/.claude/skills/speckit-git-commit/SKILL.md` → `.claude/skills/speckit-git-commit/SKILL.md` adaptada (rutas a `.claude/rules/05-ramas-y-flujo-sdd.md` local; sin referencias a artefactos del origen; conservar staging acotado, bloqueo en main, detención ante secretos, sin push)
+- [X] T026 [US4] Verificar que `jql-trampas.md` y los fixtures de prosa no contienen datos del tenant (scenarios 2 y 3 de US4); commit `feat: portar speckit-git-commit adaptada`
 
 ## Phase 7: Polish & Cross-Cutting
 

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentación técnica · Sistema visual</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="documentation.css">
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner">
+    <a class="brand" href="index.html">DOCS / TECHNICAL<small>Sistema visual · plantilla técnica offline</small></a>
+    <nav class="nav" aria-label="Guía del formato documental">
+      <a href="index.html" aria-current="page">00 · Sistema visual</a>
+      <a href="diagrams.html">01 · Diagramas</a>
+      <a href="wireframes.html">02 · Wireframes</a>
+      <a href="page-patterns.html">03 · Patrones de página</a>
+    </nav>
+  </div></header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">00 · Fundamentos · kit reutilizable</div>
+        <h1>Un lenguaje visual para explicar sistemas complejos.</h1>
+        <p class="lead">El sistema documental combina una composición editorial, diagramas técnicos estándar y wireframes inequívocamente conceptuales en un sitio HTML enlazado y sin dependencias externas.</p>
+        <div class="meta-row"><span class="tag solid">Monocromático</span><span class="tag">Offline</span><span class="tag">Responsive</span><span class="tag">Técnico</span><span class="tag pending">No es UI final</span></div>
+      </div>
+      <aside class="hero-side">
+        <h3>Firma del formato</h3>
+        <ul>
+          <li>Lienzo gris cálido y superficies de papel blanco.</li>
+          <li>Títulos grandes y metadata monospace compacta.</li>
+          <li>Bordes y patrones, no color, para distinguir estados.</li>
+          <li>Diagramas con simbología estándar y leyenda.</li>
+          <li>Wireframes low-fi conectados con su efecto sistémico.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section" id="principios">
+      <header class="section-head"><div><div class="eyebrow">Principios</div><h2>Debe verse técnico, neutral y revisable.</h2></div><p>La forma ordena la discusión sin apropiarse del lenguaje visual del producto que se está documentando.</p></header>
+      <div class="grid-4">
+        <article class="card emphasis"><h3>Editorial</h3><p>Una ruta de lectura, títulos con tesis y secciones que responden preguntas.</p></article>
+        <article class="card"><h3>Sistémico</h3><p>Componentes, decisiones, mensajes y persistencia aparecen en su nivel correcto.</p></article>
+        <article class="card"><h3>Low-fi</h3><p>Las pantallas explican estados y no simulan una interfaz aprobada.</p></article>
+        <article class="card"><h3>Portable</h3><p>HTML y CSS relativos, sin CDN, fuentes remotas ni runtime obligatorio.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="paleta">
+      <header class="section-head"><div><div class="eyebrow">Tokens de color</div><h2>Ocho tonos, una jerarquía.</h2></div><p>El negro marca acciones o énfasis; el punteado comunica propuesta o frontera. Ningún significado depende solo del color.</p></header>
+      <div class="palette-grid">
+        <div class="swatch"><div class="swatch-tone" style="background:#ececea"></div><div class="swatch-meta"><strong>CANVAS / --bg</strong><span>#ececea</span></div></div>
+        <div class="swatch"><div class="swatch-tone" style="background:#ffffff"></div><div class="swatch-meta"><strong>PAPER</strong><span>#ffffff</span></div></div>
+        <div class="swatch"><div class="swatch-tone" style="background:#141414"></div><div class="swatch-meta"><strong>INK</strong><span>#141414</span></div></div>
+        <div class="swatch"><div class="swatch-tone" style="background:#666662"></div><div class="swatch-meta"><strong>MUTED</strong><span>#666662</span></div></div>
+        <div class="swatch"><div class="swatch-tone" style="background:#b8b8b3"></div><div class="swatch-meta"><strong>LINE</strong><span>#b8b8b3</span></div></div>
+        <div class="swatch"><div class="swatch-tone" style="background:#242424"></div><div class="swatch-meta"><strong>LINE STRONG</strong><span>#242424</span></div></div>
+        <div class="swatch"><div class="swatch-tone" style="background:#e4e4e1"></div><div class="swatch-meta"><strong>SOFT</strong><span>#e4e4e1</span></div></div>
+        <div class="swatch"><div class="swatch-tone" style="background:#f7f7f5"></div><div class="swatch-meta"><strong>SOFT ALT</strong><span>#f7f7f5</span></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="tipografia">
+      <header class="section-head"><div><div class="eyebrow">Escala tipográfica</div><h2>Jerarquía editorial y precisión técnica.</h2></div><p>Sans para explicar. Monospace para identificar estados, contratos, claves, pasos y artefactos.</p></header>
+      <div class="type-stack">
+        <div class="type-row"><span class="type-label">Display · 42–76</span><span class="type-display">La pregunta principal.</span></div>
+        <div class="type-row"><span class="type-label">Section · 28–42</span><span class="type-section">Una relación por sección.</span></div>
+        <div class="type-row"><span class="type-label">Body · 14 / 1.5</span><span class="type-body">El texto contextualiza la evidencia y deja que diagramas, tablas y wireframes expliquen las relaciones.</span></div>
+        <div class="type-row"><span class="type-label">Mono · 8–11</span><span class="type-mono">STATE_PENDING · request_id · POST /resource · 01/04</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="estructura">
+      <header class="section-head"><div><div class="eyebrow">Anatomía del sitio</div><h2>Una ruta, distintas profundidades.</h2></div><p>El número de páginas se adapta al contenido. La numeración expresa orden de lectura, no una plantilla rígida de cinco capítulos.</p></header>
+      <div class="story-path" aria-label="Anatomía de una documentación técnica">
+        <article class="story-node"><span class="step">00 · Contexto</span><strong>Pregunta y alcance</strong><p>Qué se revisa, para quién y bajo qué supuestos.</p></article>
+        <article class="story-node phase-1"><span class="step">01 · Mapa</span><strong>Relaciones estáticas</strong><p>Sistemas, límites, responsabilidades y dependencias.</p></article>
+        <article class="story-node phase-1"><span class="step">02 · Runtime</span><strong>Proceso y secuencia</strong><p>Decisiones, mensajes, alternativas y resultados.</p></article>
+        <article class="story-node phase-2"><span class="step">03 · Experiencia</span><strong>Estados de pantalla</strong><p>Wireframes con la capa sistémica bajo cada caso.</p></article>
+        <article class="story-node phase-2"><span class="step">04 · Cierre</span><strong>Contratos y decisiones</strong><p>Datos, invariantes, dudas, owners y próximos pasos.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="estados">
+      <header class="section-head"><div><div class="eyebrow">Semántica editorial</div><h2>Los estados se leen sin depender del color.</h2></div><p>Texto, peso, relleno y borde comunican el nivel de certeza.</p></header>
+      <div class="decision"><div class="decision-state">Confirmado</div><div class="decision-body"><strong>Comportamiento acordado</strong><p>Borde continuo y lenguaje afirmativo.</p></div></div>
+      <div class="decision proposed"><div class="decision-state">Propuesto</div><div class="decision-body"><strong>Baseline sujeto a revisión</strong><p>Borde punteado y alcance explícito.</p></div></div>
+      <div class="callout open"><strong>Abierto · formular como pregunta</strong><p>Indica qué definición falta y qué parte del flujo, contrato o arquitectura podría cambiar.</p></div>
+    </section>
+
+    <footer class="footer"><span>TECHNICAL DOCS · guía visual neutral</span><span>Siguiente: <a href="diagrams.html">Catálogo de diagramas →</a></span></footer>
+  </main>
+</body>
+</html>

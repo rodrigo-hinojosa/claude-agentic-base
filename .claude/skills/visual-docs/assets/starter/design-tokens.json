@@ -1,0 +1,43 @@
+{
+  "name": "technical-documentation",
+  "color": {
+    "canvas": "#ececea",
+    "paper": "#ffffff",
+    "ink": "#141414",
+    "muted": "#666662",
+    "line": "#b8b8b3",
+    "lineStrong": "#242424",
+    "soft": "#e4e4e1",
+    "softAlt": "#f7f7f5",
+    "codeSurface": "#202020",
+    "codeInk": "#f4f4f1"
+  },
+  "font": {
+    "sans": "Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+    "mono": "SFMono-Regular, Consolas, monospace"
+  },
+  "size": {
+    "body": 14,
+    "metadataMin": 8,
+    "metadataMax": 11,
+    "h3": 19,
+    "lead": 20,
+    "h2Min": 28,
+    "h2Max": 42,
+    "h1Min": 42,
+    "h1Max": 76
+  },
+  "space": [4, 7, 8, 10, 12, 14, 18, 20, 24, 28, 30, 34, 38, 44, 48, 72],
+  "radius": {
+    "metadata": 3,
+    "control": 5,
+    "card": 8,
+    "pill": 999
+  },
+  "layout": {
+    "contentMax": 1580,
+    "wireframeWidth": 326,
+    "wireframeBodyMinHeight": 520,
+    "diagramMinWidth": 1320
+  }
+}

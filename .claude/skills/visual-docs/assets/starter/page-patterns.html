@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentación técnica · Patrones de página</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="documentation.css">
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner">
+    <a class="brand" href="index.html">DOCS / TECHNICAL<small>Sistema visual · plantilla técnica offline</small></a>
+    <nav class="nav" aria-label="Guía del formato documental">
+      <a href="index.html">00 · Sistema visual</a>
+      <a href="diagrams.html">01 · Diagramas</a>
+      <a href="wireframes.html">02 · Wireframes</a>
+      <a href="page-patterns.html" aria-current="page">03 · Patrones de página</a>
+    </nav>
+  </div></header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">03 · Composición · bloques editoriales</div>
+        <h1>Patrones para convertir evidencia en una revisión técnica.</h1>
+        <p class="lead">Las páginas combinan solo los bloques necesarios: contexto, comparación, decisión, contrato, responsabilidad y criterios de cierre.</p>
+        <div class="meta-row"><span class="tag solid">Hero</span><span class="tag">Cards</span><span class="tag">Decision ledger</span><span class="tag">Tables</span><span class="tag">Contracts</span></div>
+      </div>
+      <aside class="hero-side">
+        <h3>Criterio de composición</h3>
+        <ul>
+          <li>Una pregunta principal por sección.</li>
+          <li>Prosa para contexto; tabla para exactitud.</li>
+          <li>Diagrama para relaciones, no decoración.</li>
+          <li>Contrato oscuro solo para información literal.</li>
+          <li>Dudas abiertas con impacto explícito.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section" id="selector">
+      <header class="section-head"><div><div class="eyebrow">Selección de bloque</div><h2>El contenido determina la forma.</h2></div><p>Evita repetir la misma afirmación en prosa, tarjeta y diagrama. Elige la representación que hace visible la relación importante.</p></header>
+      <div class="pattern-grid">
+        <article class="pattern-panel"><div class="eyebrow">Conceptos paralelos</div><h3>Cards</h3><p>Úsalas para tres o cuatro ideas de similar jerarquía que pueden leerse por separado.</p><div class="annotation-line"><strong>No usar</strong><span>Para secuencias, dependencias o mapeos campo a campo.</span></div></article>
+        <article class="pattern-panel"><div class="eyebrow">Comparación exacta</div><h3>Tabla</h3><p>Úsala cuando varias filas comparten dimensiones, estados, owners o contratos.</p><div class="annotation-line"><strong>No usar</strong><span>Cuando el orden temporal o la dirección de una llamada importan.</span></div></article>
+        <article class="pattern-panel"><div class="eyebrow">Relación difícil</div><h3>Diagrama</h3><p>Úsalo para componentes, decisiones, secuencia, estados, datos o despliegue.</p><div class="annotation-line"><strong>Condición</strong><span>El lector debe obtener una conclusión que no era obvia en una lista.</span></div></article>
+        <article class="pattern-panel"><div class="eyebrow">Interacción visible</div><h3>Wireframe</h3><p>Úsalo para revisar información, acción, feedback, error y recuperación.</p><div class="annotation-line"><strong>Condición</strong><span>Debe estar rotulado LOW-FI y, si aplica, mostrar su capa sistémica.</span></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="decisiones">
+      <header class="section-head"><div><div class="eyebrow">Decision ledger</div><h2>Separar certeza, propuesta y duda.</h2></div><p>La forma evita que una inferencia visual parezca una decisión ya tomada.</p></header>
+      <div class="decision"><div class="decision-state">Confirmado</div><div class="decision-body"><strong>El evento se publica después del commit.</strong><p>Comportamiento acordado; la documentación puede afirmarlo.</p></div></div>
+      <div class="decision proposed"><div class="decision-state">Propuesto</div><div class="decision-body"><strong>Usar outbox transaccional como baseline.</strong><p>Alternativa técnica recomendada, sujeta a revisión de plataforma.</p></div></div>
+      <div class="decision proposed"><div class="decision-state">Abierto</div><div class="decision-body"><strong>¿Qué equipo opera el replay de eventos?</strong><p>Impacta ownership, alertas y runbook; owner de decisión: por definir.</p></div></div>
+    </section>
+
+    <section class="section" id="responsabilidades">
+      <header class="section-head"><div><div class="eyebrow">Matriz técnica</div><h2>Responsabilidades sin ambigüedad.</h2></div><p>Las tablas permiten revisar ownership, entrada, salida y restricciones sin cargar el diagrama.</p></header>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Componente</th><th>Responsabilidad</th><th>Entrada</th><th>Salida</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Gateway</strong></td><td>Autorización y routing.</td><td><code>command + actor</code></td><td><code>accepted | rejected</code></td><td><span class="status">Confirmado</span></td></tr>
+          <tr><td><strong>Domain Service</strong></td><td>Reglas e invariantes.</td><td><code>validated command</code></td><td><code>result + event</code></td><td><span class="status">Confirmado</span></td></tr>
+          <tr><td><strong>Event Relay</strong></td><td>Entrega y reintento.</td><td><code>outbox record</code></td><td><code>published event</code></td><td><span class="status open">Propuesto</span></td></tr>
+          <tr><td><strong>Operations</strong></td><td>Replay y observabilidad.</td><td><code>alert + event_ref</code></td><td><code>resolution</code></td><td><span class="status open">Abierto</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="section" id="contrato">
+      <header class="section-head"><div><div class="eyebrow">Contrato técnico</div><h2>El contenido literal vive en un bloque dedicado.</h2></div><p>La descripción explica intención y garantías; el área oscura conserva nombres y estructura exactos.</p></header>
+      <div class="contract">
+        <div class="contract-meta"><h3>Evento de ejemplo</h3><p>Esquema conceptual para demostrar el patrón visual. Los nombres no son una recomendación de dominio.</p><div class="meta-row"><span class="tag">versionado</span><span class="tag">sin PII</span><span class="tag pending">retención abierta</span></div></div>
+        <pre><code>{
+  "event_id": "evt_01H...",
+  "event_type": "resource.changed.v1",
+  "aggregate_ref": "res_8f...",
+  "occurred_at": "2026-01-15T14:22:03Z",
+  "actor_ref": "actor_42...",
+  "data": {
+    "previous_state": "PENDING",
+    "new_state": "ACTIVE",
+    "version": 7
+  }
+}</code></pre>
+      </div>
+    </section>
+
+    <section class="section" id="ruta">
+      <header class="section-head"><div><div class="eyebrow">Ruta de presentación</div><h2>Orden sugerido para una revisión.</h2></div><p>El tiempo es metadata opcional; úsalo solo cuando el documento acompañará una presentación.</p></header>
+      <div class="presenter-route">
+        <div class="presenter-step"><span class="route-kind">Contexto</span><span>Pregunta, alcance, audiencia y restricciones.</span><span class="route-time">2 min</span></div>
+        <div class="presenter-step"><span class="route-kind">Mapa</span><span>Componentes, boundaries, ownership y dependencias.</span><span class="route-time">4 min</span></div>
+        <div class="presenter-step"><span class="route-kind">Runtime</span><span>Proceso, secuencia, fallos y garantías.</span><span class="route-time">5 min</span></div>
+        <div class="presenter-step"><span class="route-kind">Experiencia</span><span>Wireframes, alternativas y capa sistémica.</span><span class="route-time">4 min</span></div>
+        <div class="presenter-step"><span class="route-kind">Cierre</span><span>Decisiones confirmadas, propuestas y preguntas.</span><span class="route-time">3 min</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="checklist-muestra">
+      <header class="section-head"><div><div class="eyebrow">Cierre de página</div><h2>Criterios verificables.</h2></div><p>Un checklist convierte afirmaciones generales en una revisión concreta.</p></header>
+      <div class="checklist">
+        <div class="check"><span class="id">01</span><span class="owner">Contenido</span><span>Cada afirmación crítica tiene fuente o estado editorial.</span></div>
+        <div class="check"><span class="id">02</span><span class="owner">Arquitectura</span><span>Cada componente tiene responsabilidad y límite identificables.</span></div>
+        <div class="check"><span class="id">03</span><span class="owner">Diseño</span><span>Los wireframes se perciben como low-fi y cubren alternativas materiales.</span></div>
+        <div class="check"><span class="id">04</span><span class="owner">QA</span><span>Links, IDs, consola, clipping y viewports fueron validados.</span></div>
+      </div>
+    </section>
+
+    <footer class="footer"><span><a href="wireframes.html">← Wireframes</a></span><span><a href="index.html">Volver al sistema visual ↑</a></span></footer>
+  </main>
+</body>
+</html>

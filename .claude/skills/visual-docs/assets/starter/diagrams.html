@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentación técnica · Diagramas</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="documentation.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#222"/></marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#666"/></marker>
+  </defs></svg>
+
+  <header class="topbar"><div class="topbar-inner">
+    <a class="brand" href="index.html">DOCS / TECHNICAL<small>Sistema visual · plantilla técnica offline</small></a>
+    <nav class="nav" aria-label="Guía del formato documental">
+      <a href="index.html">00 · Sistema visual</a>
+      <a href="diagrams.html" aria-current="page">01 · Diagramas</a>
+      <a href="wireframes.html">02 · Wireframes</a>
+      <a href="page-patterns.html">03 · Patrones de página</a>
+    </nav>
+  </div></header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">01 · Catálogo · notación técnica</div>
+        <h1>Una forma distinta para cada tipo de relación.</h1>
+        <p class="lead">El sistema documental usa diagramas estándar, conectores consistentes y lienzos amplios. La muestra es neutral: los nombres deben reemplazarse por conceptos del dominio documentado.</p>
+        <div class="meta-row"><span class="tag solid">Arquitectura</span><span class="tag">Flowchart</span><span class="tag">Secuencia</span><span class="tag">Estados</span><span class="tag">ERD</span></div>
+      </div>
+      <aside class="hero-side">
+        <h3>Reglas compartidas</h3>
+        <ul>
+          <li>Una pregunta principal por diagrama.</li>
+          <li>Etiquetas breves y legibles al 100 %.</li>
+          <li>Línea continua para acción principal; punteada para retorno o evento.</li>
+          <li>Scroll horizontal antes que texto diminuto.</li>
+          <li>Título, descripción y leyenda accesibles.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section" id="formas">
+      <header class="section-head"><div><div class="eyebrow">Vocabulario base</div><h2>La semántica comienza en la forma.</h2></div><p>Los ejemplos usan borde, geometría y patrón. El significado no depende del color.</p></header>
+      <div class="shape-catalog">
+        <div class="shape-card"><div><div class="shape-demo terminal">START</div><strong>Inicio / fin</strong><small>Elipse</small></div></div>
+        <div class="shape-card"><div><div class="shape-demo">SERVICE</div><strong>Proceso</strong><small>Rectángulo</small></div></div>
+        <div class="shape-card"><div><div class="shape-demo decision-demo"><span>?</span></div><strong>Decisión</strong><small>Rombo</small></div></div>
+        <div class="shape-card"><div><div class="shape-demo note-demo">ALT / NOTE</div><strong>Nota</strong><small>Borde punteado</small></div></div>
+        <div class="shape-card"><div><div class="shape-demo boundary-demo">ZONE</div><strong>Límite</strong><small>Contenedor punteado</small></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="arquitectura">
+      <header class="section-head"><div><div class="eyebrow">Diagrama 1/5 · arquitectura</div><h2>Componentes, responsabilidades y límites.</h2></div><p>Úsalo para responder dónde vive cada capacidad y cuáles son las dependencias externas.</p></header>
+      <div class="diagram-shell"><div class="diagram-head"><strong>Component diagram · muestra neutral</strong><span>continuo: request · punteado: evento</span></div><div class="diagram-scroll">
+        <svg class="tech-diagram" viewBox="0 0 1450 650" role="img" aria-labelledby="arch-title arch-desc">
+          <title id="arch-title">Ejemplo de diagrama de arquitectura técnica</title>
+          <desc id="arch-desc">Tres límites muestran canal, plataforma propia y proveedor externo, conectados mediante solicitudes y eventos.</desc>
+          <rect x="28" y="35" width="255" height="560" rx="8" class="trust"/><text x="48" y="62" font-size="11" font-weight="800" class="mono">CLIENT ZONE</text>
+          <rect x="58" y="118" width="195" height="72" rx="5" class="actor"/><text x="155" y="147" text-anchor="middle" font-size="14" font-weight="700">Persona</text><text x="155" y="168" text-anchor="middle" font-size="10">rol o dispositivo</text>
+          <rect x="58" y="268" width="195" height="72" rx="5" class="process"/><text x="155" y="297" text-anchor="middle" font-size="14" font-weight="700">Web / App</text><text x="155" y="318" text-anchor="middle" font-size="10">canal de entrada</text>
+          <rect x="58" y="418" width="195" height="72" rx="5" class="data"/><text x="155" y="447" text-anchor="middle" font-size="14" font-weight="700">Estado local</text><text x="155" y="468" text-anchor="middle" font-size="10">sesión / caché</text>
+
+          <rect x="315" y="35" width="760" height="560" rx="8" class="trust"/><text x="335" y="62" font-size="11" font-weight="800" class="mono">PLATFORM BOUNDED CONTEXT</text>
+          <rect x="350" y="105" width="205" height="78" rx="5" class="process"/><text x="452" y="136" text-anchor="middle" font-size="14" font-weight="700">API Gateway</text><text x="452" y="158" text-anchor="middle" font-size="10">política + routing</text>
+          <rect x="615" y="105" width="205" height="78" rx="5" class="process"/><text x="717" y="136" text-anchor="middle" font-size="14" font-weight="700">Orchestrator</text><text x="717" y="158" text-anchor="middle" font-size="10">caso de uso</text>
+          <rect x="350" y="268" width="205" height="82" rx="5" class="process"/><text x="452" y="300" text-anchor="middle" font-size="14" font-weight="700">Domain Service</text><text x="452" y="322" text-anchor="middle" font-size="10">reglas e invariantes</text>
+          <rect x="615" y="268" width="205" height="82" rx="5" class="process"/><text x="717" y="300" text-anchor="middle" font-size="14" font-weight="700">Integration Adapter</text><text x="717" y="322" text-anchor="middle" font-size="10">contrato externo</text>
+          <rect x="870" y="105" width="170" height="78" rx="5" class="data"/><text x="955" y="136" text-anchor="middle" font-size="14" font-weight="700">Event Bus</text><text x="955" y="158" text-anchor="middle" font-size="10">entrega asíncrona</text>
+          <rect x="350" y="445" width="205" height="82" rx="5" class="data"/><text x="452" y="477" text-anchor="middle" font-size="14" font-weight="700">Primary Store</text><text x="452" y="499" text-anchor="middle" font-size="10">estado autoritativo</text>
+          <rect x="615" y="445" width="205" height="82" rx="5" class="data"/><text x="717" y="477" text-anchor="middle" font-size="14" font-weight="700">Audit Log</text><text x="717" y="499" text-anchor="middle" font-size="10">trazabilidad</text>
+
+          <rect x="1107" y="35" width="315" height="560" rx="8" class="trust"/><text x="1127" y="62" font-size="11" font-weight="800" class="mono">EXTERNAL PROVIDER</text>
+          <rect x="1150" y="180" width="225" height="82" rx="5" class="process"/><text x="1262" y="212" text-anchor="middle" font-size="14" font-weight="700">Provider API</text><text x="1262" y="234" text-anchor="middle" font-size="10">capacidad contratada</text>
+          <rect x="1150" y="380" width="225" height="82" rx="5" class="note"/><text x="1262" y="412" text-anchor="middle" font-size="14" font-weight="700">Webhook</text><text x="1262" y="434" text-anchor="middle" font-size="10">evento firmado</text>
+
+          <line x1="155" y1="190" x2="155" y2="268" class="message"/><line x1="155" y1="340" x2="155" y2="418" class="return"/><line x1="253" y1="304" x2="350" y2="144" class="message"/>
+          <line x1="555" y1="144" x2="615" y2="144" class="message"/><line x1="717" y1="183" x2="717" y2="268" class="message"/>
+          <line x1="615" y1="309" x2="555" y2="309" class="message"/><line x1="452" y1="350" x2="452" y2="445" class="message"/>
+          <line x1="555" y1="309" x2="870" y2="144" class="return"/><line x1="820" y1="309" x2="1150" y2="221" class="message"/>
+          <line x1="1262" y1="262" x2="1262" y2="380" class="return"/><line x1="1150" y1="421" x2="820" y2="486" class="return"/>
+        </svg>
+      </div><div class="diagram-legend"><span>Request o comando</span><span class="dashed">Evento, callback o retorno</span><span class="dashed">Área punteada: límite de confianza</span></div></div>
+    </section>
+
+    <section class="section" id="flowchart">
+      <header class="section-head"><div><div class="eyebrow">Diagrama 2/5 · proceso</div><h2>Decisiones y resultados de punta a punta.</h2></div><p>El rombo expresa una condición; cada salida tiene nombre y termina o vuelve al camino principal.</p></header>
+      <div class="diagram-shell"><div class="diagram-head"><strong>Flowchart · caso de uso genérico</strong><span>camino principal + alternativa recuperable</span></div><div class="diagram-scroll">
+        <svg class="tech-diagram" viewBox="0 0 1450 590" role="img" aria-labelledby="flow-title flow-desc">
+          <title id="flow-title">Ejemplo de flowchart técnico</title>
+          <desc id="flow-desc">Un proceso recibe una solicitud, valida los datos, persiste un resultado o muestra un error recuperable.</desc>
+          <ellipse cx="105" cy="220" rx="78" ry="38" class="terminal"/><text x="105" y="225" text-anchor="middle" font-size="13" font-weight="700">Inicio</text>
+          <line x1="183" y1="220" x2="255" y2="220" class="message"/>
+          <rect x="255" y="180" width="190" height="80" rx="5" class="process"/><text x="350" y="212" text-anchor="middle" font-size="14" font-weight="700">Recibir solicitud</text><text x="350" y="234" text-anchor="middle" font-size="10">contexto + datos</text>
+          <line x1="445" y1="220" x2="510" y2="220" class="message"/>
+          <polygon points="590,140 670,220 590,300 510,220" class="decision-shape"/><text x="590" y="214" text-anchor="middle" font-size="12" font-weight="700">¿Entrada</text><text x="590" y="233" text-anchor="middle" font-size="12" font-weight="700">válida?</text>
+          <line x1="670" y1="220" x2="755" y2="220" class="message"/><text x="703" y="208" font-size="10" class="mono">sí</text>
+          <rect x="755" y="180" width="190" height="80" rx="5" class="process"/><text x="850" y="212" text-anchor="middle" font-size="14" font-weight="700">Ejecutar regla</text><text x="850" y="234" text-anchor="middle" font-size="10">operación idempotente</text>
+          <line x1="945" y1="220" x2="1015" y2="220" class="message"/>
+          <rect x="1015" y="180" width="190" height="80" rx="5" class="data"/><text x="1110" y="212" text-anchor="middle" font-size="14" font-weight="700">Persistir estado</text><text x="1110" y="234" text-anchor="middle" font-size="10">+ evento de auditoría</text>
+          <line x1="1205" y1="220" x2="1272" y2="220" class="message"/>
+          <ellipse cx="1350" cy="220" rx="78" ry="38" class="terminal"/><text x="1350" y="225" text-anchor="middle" font-size="13" font-weight="700">Confirmar</text>
+
+          <line x1="590" y1="300" x2="590" y2="390" class="message"/><text x="602" y="344" font-size="10" class="mono">no</text>
+          <rect x="485" y="390" width="210" height="82" rx="5" class="note"/><text x="590" y="422" text-anchor="middle" font-size="14" font-weight="700">Error recuperable</text><text x="590" y="444" text-anchor="middle" font-size="10">corregir o cancelar</text>
+          <path d="M 485 431 H 350 V 260" fill="none" class="return"/><text x="371" y="419" font-size="10" class="mono">reintentar</text>
+          <line x1="695" y1="431" x2="850" y2="431" class="return"/><text x="752" y="419" font-size="10" class="mono">cancelar</text>
+          <ellipse cx="928" cy="431" rx="78" ry="38" class="terminal"/><text x="928" y="436" text-anchor="middle" font-size="13" font-weight="700">Sin cambios</text>
+        </svg>
+      </div><div class="diagram-legend"><span>Camino principal</span><span class="dashed">Recuperación o salida alternativa</span><span>Rombo: condición con salidas rotuladas</span></div></div>
+    </section>
+
+    <section class="section" id="secuencia">
+      <header class="section-head"><div><div class="eyebrow">Diagrama 3/5 · secuencia</div><h2>Mensajes y orden temporal.</h2></div><p>Úsalo cuando el orden, el ownership del llamado o una alternativa técnica sean parte de la decisión.</p></header>
+      <div class="diagram-shell"><div class="diagram-head"><strong>Sequence · request + evento</strong><span>actores neutralizados</span></div><div class="diagram-scroll">
+        <svg class="tech-diagram" viewBox="0 0 1500 720" role="img" aria-labelledby="seq-title seq-desc">
+          <title id="seq-title">Ejemplo de diagrama de secuencia técnico</title>
+          <desc id="seq-desc">La persona inicia una acción; la interfaz, gateway, servicio y base de datos colaboran y contemplan una alternativa de conflicto.</desc>
+          <g><rect x="35" y="25" width="160" height="50" rx="4" class="actor"/><text x="115" y="56" text-anchor="middle" font-size="13" font-weight="700">Persona</text><line x1="115" y1="75" x2="115" y2="680" class="lifeline"/></g>
+          <g><rect x="315" y="25" width="160" height="50" rx="4" class="actor"/><text x="395" y="48" text-anchor="middle" font-size="13" font-weight="700">Interface</text><text x="395" y="64" text-anchor="middle" font-size="9">web / app</text><line x1="395" y1="75" x2="395" y2="680" class="lifeline"/></g>
+          <g><rect x="595" y="25" width="160" height="50" rx="4" class="actor"/><text x="675" y="48" text-anchor="middle" font-size="13" font-weight="700">Gateway</text><text x="675" y="64" text-anchor="middle" font-size="9">policy + routing</text><line x1="675" y1="75" x2="675" y2="680" class="lifeline"/></g>
+          <g><rect x="875" y="25" width="160" height="50" rx="4" class="actor"/><text x="955" y="48" text-anchor="middle" font-size="13" font-weight="700">Domain Service</text><text x="955" y="64" text-anchor="middle" font-size="9">invariant</text><line x1="955" y1="75" x2="955" y2="680" class="lifeline"/></g>
+          <g><rect x="1155" y="25" width="160" height="50" rx="4" class="actor"/><text x="1235" y="48" text-anchor="middle" font-size="13" font-weight="700">Store</text><text x="1235" y="64" text-anchor="middle" font-size="9">versioned state</text><line x1="1235" y1="75" x2="1235" y2="680" class="lifeline"/></g>
+
+          <line x1="115" y1="120" x2="395" y2="120" class="message"/><text x="255" y="110" text-anchor="middle" font-size="10">confirmar acción</text>
+          <line x1="395" y1="170" x2="675" y2="170" class="message"/><text x="535" y="160" text-anchor="middle" font-size="10" class="mono">POST /resource + idempotency_key</text>
+          <line x1="675" y1="220" x2="955" y2="220" class="message"/><text x="815" y="210" text-anchor="middle" font-size="10" class="mono">execute(command, actor)</text>
+          <line x1="955" y1="270" x2="1235" y2="270" class="message"/><text x="1095" y="260" text-anchor="middle" font-size="10" class="mono">compareAndSet(expected_version)</text>
+          <rect x="850" y="310" width="480" height="95" rx="4" class="note"/><text x="872" y="335" font-size="10" font-weight="800" class="mono">ALT [VERSION CONFLICT]</text><text x="872" y="361" font-size="11">Retornar conflicto recuperable. No duplicar la operación.</text><text x="872" y="382" font-size="11">La UI ofrece recargar el estado o cancelar.</text>
+          <line x1="1235" y1="445" x2="955" y2="445" class="return"/><text x="1095" y="435" text-anchor="middle" font-size="10" class="mono">saved(version + 1)</text>
+          <line x1="955" y1="495" x2="675" y2="495" class="return"/><text x="815" y="485" text-anchor="middle" font-size="10" class="mono">result + audit_ref</text>
+          <line x1="675" y1="545" x2="395" y2="545" class="return"/><text x="535" y="535" text-anchor="middle" font-size="10" class="mono">200 OK | 409 CONFLICT</text>
+          <line x1="395" y1="595" x2="115" y2="595" class="return"/><text x="255" y="585" text-anchor="middle" font-size="10">confirmación o recuperación</text>
+        </svg>
+      </div><div class="diagram-legend"><span>Llamada o comando</span><span class="dashed">Respuesta</span><span class="dashed">ALT: condición material</span></div></div>
+    </section>
+
+    <section class="section" id="estados-diagrama">
+      <header class="section-head"><div><div class="eyebrow">Diagrama 4/5 · estados</div><h2>Ciclo de vida persistido.</h2></div><p>Los nodos nombran estados; las flechas nombran eventos. No reemplaza al flujo de pantallas.</p></header>
+      <div class="diagram-shell"><div class="diagram-head"><strong>State machine · recurso genérico</strong><span>estado inicial + terminales</span></div><div class="diagram-scroll">
+        <svg class="tech-diagram" viewBox="0 0 1400 500" role="img" aria-labelledby="state-title state-desc">
+          <title id="state-title">Ejemplo de máquina de estados técnica</title>
+          <desc id="state-desc">Un recurso pasa de borrador a pendiente, activo, suspendido o cerrado mediante eventos identificados.</desc>
+          <circle cx="85" cy="230" r="12" fill="#222"/><line x1="97" y1="230" x2="190" y2="230" class="message"/><text x="132" y="216" font-size="10" class="mono">create</text>
+          <rect x="190" y="190" width="170" height="80" rx="28" class="process"/><text x="275" y="235" text-anchor="middle" font-size="14" font-weight="700">DRAFT</text>
+          <line x1="360" y1="230" x2="475" y2="230" class="message"/><text x="397" y="216" font-size="10" class="mono">submit</text>
+          <rect x="475" y="190" width="170" height="80" rx="28" class="process"/><text x="560" y="235" text-anchor="middle" font-size="14" font-weight="700">PENDING</text>
+          <line x1="645" y1="230" x2="760" y2="230" class="message"/><text x="680" y="216" font-size="10" class="mono">approve</text>
+          <rect x="760" y="190" width="170" height="80" rx="28" class="process"/><text x="845" y="235" text-anchor="middle" font-size="14" font-weight="700">ACTIVE</text>
+          <path d="M 845 190 V 105 H 560 V 190" fill="none" class="return"/><text x="675" y="92" font-size="10" class="mono">request_changes</text>
+          <path d="M 845 270 V 355 H 1035" fill="none" class="message"/><text x="885" y="342" font-size="10" class="mono">suspend</text>
+          <rect x="1035" y="315" width="170" height="80" rx="28" class="note"/><text x="1120" y="360" text-anchor="middle" font-size="14" font-weight="700">SUSPENDED</text>
+          <path d="M 1035 355 H 930 V 270" fill="none" class="return"/><text x="943" y="342" font-size="10" class="mono">resume</text>
+          <line x1="930" y1="230" x2="1090" y2="230" class="message"/><text x="985" y="216" font-size="10" class="mono">close</text>
+          <rect x="1090" y="190" width="170" height="80" rx="28" class="data"/><text x="1175" y="235" text-anchor="middle" font-size="14" font-weight="700">CLOSED</text>
+          <line x1="1260" y1="230" x2="1330" y2="230" stroke="#222" stroke-width="1.3"/><circle cx="1345" cy="230" r="14" fill="none" stroke="#222" stroke-width="2"/><circle cx="1345" cy="230" r="8" fill="#222"/>
+        </svg>
+      </div><div class="diagram-legend"><span>Estado normal</span><span class="dashed">Estado excepcional o transición de retorno</span><span>Evento sobre cada transición</span></div></div>
+    </section>
+
+    <section class="section" id="erd">
+      <header class="section-head"><div><div class="eyebrow">Diagrama 5/5 · entidad-relación</div><h2>Claves, cardinalidades e invariantes.</h2></div><p>La muestra usa un dominio neutral. El modelo real debe derivarse de la evidencia del proyecto.</p></header>
+      <div class="diagram-shell"><div class="diagram-head"><strong>Entity relationship · modelo lógico</strong><span>PK · FK · UK</span></div><div class="diagram-scroll">
+        <svg class="tech-diagram" viewBox="0 0 1500 690" role="img" aria-labelledby="erd-title erd-desc">
+          <title id="erd-title">Ejemplo de diagrama entidad-relación técnico</title>
+          <desc id="erd-desc">Un principal posee cuentas; las cuentas se suscriben a planes y generan eventos de auditoría.</desc>
+          <rect x="55" y="70" width="320" height="210" class="data"/><rect x="55" y="70" width="320" height="38" fill="#dededb" stroke="#222"/><text x="75" y="95" font-size="15" font-weight="800" class="mono">principal</text><text x="75" y="138" font-size="11" class="mono">PK  principal_id</text><text x="75" y="164" font-size="11" class="mono">    display_ref</text><text x="75" y="190" font-size="11" class="mono">    state</text><text x="75" y="216" font-size="11" class="mono">    created_at</text><text x="75" y="242" font-size="11" class="mono">    version</text>
+          <rect x="590" y="70" width="330" height="235" class="data"/><rect x="590" y="70" width="330" height="38" fill="#dededb" stroke="#222"/><text x="610" y="95" font-size="15" font-weight="800" class="mono">account</text><text x="610" y="138" font-size="11" class="mono">PK  account_id</text><text x="610" y="164" font-size="11" class="mono">FK  principal_id</text><text x="610" y="190" font-size="11" class="mono">UK  provider + external_ref</text><text x="610" y="216" font-size="11" class="mono">    state</text><text x="610" y="242" font-size="11" class="mono">    created_at / updated_at</text><text x="610" y="268" font-size="11" class="mono">    version</text>
+          <rect x="1090" y="70" width="330" height="210" class="data"/><rect x="1090" y="70" width="330" height="38" fill="#dededb" stroke="#222"/><text x="1110" y="95" font-size="15" font-weight="800" class="mono">plan</text><text x="1110" y="138" font-size="11" class="mono">PK  plan_id</text><text x="1110" y="164" font-size="11" class="mono">UK  plan_code</text><text x="1110" y="190" font-size="11" class="mono">    state</text><text x="1110" y="216" font-size="11" class="mono">    policy_ref</text><text x="1110" y="242" font-size="11" class="mono">    version</text>
+          <rect x="590" y="420" width="330" height="210" class="data"/><rect x="590" y="420" width="330" height="38" fill="#dededb" stroke="#222"/><text x="610" y="445" font-size="15" font-weight="800" class="mono">subscription</text><text x="610" y="488" font-size="11" class="mono">PK  subscription_id</text><text x="610" y="514" font-size="11" class="mono">FK  account_id</text><text x="610" y="540" font-size="11" class="mono">FK  plan_id</text><text x="610" y="566" font-size="11" class="mono">UK  account_id + active_scope</text><text x="610" y="592" font-size="11" class="mono">    state / valid_until</text>
+          <rect x="55" y="420" width="320" height="210" class="data"/><rect x="55" y="420" width="320" height="38" fill="#dededb" stroke="#222"/><text x="75" y="445" font-size="15" font-weight="800" class="mono">audit_event</text><text x="75" y="488" font-size="11" class="mono">PK  event_id</text><text x="75" y="514" font-size="11" class="mono">FK? principal_id</text><text x="75" y="540" font-size="11" class="mono">    aggregate_ref</text><text x="75" y="566" font-size="11" class="mono">    event_type</text><text x="75" y="592" font-size="11" class="mono">    occurred_at</text>
+
+          <line x1="375" y1="175" x2="590" y2="175" stroke="#222" stroke-width="1.5"/><text x="393" y="162" font-size="11" class="mono">1</text><text x="555" y="162" font-size="11" class="mono">0..N</text><text x="482" y="198" text-anchor="middle" font-size="10">owns</text>
+          <line x1="755" y1="305" x2="755" y2="420" stroke="#222" stroke-width="1.5"/><text x="768" y="327" font-size="11" class="mono">1</text><text x="768" y="404" font-size="11" class="mono">0..N</text>
+          <path d="M 920 525 H 1045 V 175 H 1090" fill="none" stroke="#222" stroke-width="1.5"/><text x="934" y="512" font-size="11" class="mono">0..N</text><text x="1056" y="162" font-size="11" class="mono">1</text><text x="1010" y="544" text-anchor="middle" font-size="10">selects</text>
+          <path d="M 375 525 H 485 V 220 H 590" fill="none" stroke="#666" stroke-width="1.2" stroke-dasharray="5 4"/><text x="392" y="512" font-size="11" class="mono">0..N</text><text x="555" y="208" font-size="11" class="mono">0..1</text><text x="473" y="548" text-anchor="middle" font-size="10">records activity</text>
+        </svg>
+      </div><div class="diagram-legend"><span>Asociación lógica</span><span class="dashed">Relación opcional</span><span>Cardinalidad en ambos extremos</span></div></div>
+    </section>
+
+    <footer class="footer"><span><a href="index.html">← Sistema visual</a></span><span>Siguiente: <a href="wireframes.html">Wireframes low-fi →</a></span></footer>
+  </main>
+</body>
+</html>

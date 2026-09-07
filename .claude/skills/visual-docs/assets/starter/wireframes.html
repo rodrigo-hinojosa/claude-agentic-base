@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentación técnica · Wireframes</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="documentation.css">
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner">
+    <a class="brand" href="index.html">DOCS / TECHNICAL<small>Sistema visual · plantilla técnica offline</small></a>
+    <nav class="nav" aria-label="Guía del formato documental">
+      <a href="index.html">00 · Sistema visual</a>
+      <a href="diagrams.html">01 · Diagramas</a>
+      <a href="wireframes.html" aria-current="page">02 · Wireframes</a>
+      <a href="page-patterns.html">03 · Patrones de página</a>
+    </nav>
+  </div></header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">02 · UI conceptual · flujo + sistema</div>
+        <h1>Pantallas de ejemplo que no parecen diseño final.</h1>
+        <p class="lead">Cada estado se representa en blanco y negro, con controles simples, copy suficiente para entender la decisión y una capa técnica que explica qué ocurre detrás.</p>
+        <div class="meta-row"><span class="tag solid">LOW-FI</span><span class="tag">326 px</span><span class="tag">Camino principal</span><span class="tag">Alternativas</span><span class="tag pending">UI y copy por validar</span></div>
+      </div>
+      <aside class="hero-side">
+        <h3>Qué debe comunicar</h3>
+        <ul>
+          <li>El punto real de entrada al flujo.</li>
+          <li>Qué decisión toma la persona.</li>
+          <li>Feedback, error, recuperación y cancelación.</li>
+          <li>Qué sistemas participan en cada pantalla.</li>
+          <li>Qué estado cambia y bajo qué condición.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section" id="anatomia-wireframe">
+      <header class="section-head"><div><div class="eyebrow">Anatomía</div><h2>Una pantalla y su contrato conceptual.</h2></div><p>El dispositivo explica la experiencia. La franja inferior permite que arquitectura y desarrollo revisen el mismo paso sin invadir la UI.</p></header>
+      <div class="grid-4">
+        <article class="card emphasis"><h3>01 · Etiqueta</h3><p>Número, nombre del estado, alcance y sello LOW-FI.</p></article>
+        <article class="card"><h3>02 · Dispositivo</h3><p>Status bar, appbar y controles en grises neutros.</p></article>
+        <article class="card"><h3>03 · Acciones</h3><p>Primaria negra, secundarias blancas y salida visible.</p></article>
+        <article class="card"><h3>04 · Sistema</h3><p>Participantes, operación, escritura y efecto técnico.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="flujo-principal">
+      <header class="section-head"><div><div class="eyebrow">Wireflow 1/2 · camino principal</div><h2>Entrada, selección, verificación y resultado.</h2></div><p>El contenido es neutral y solo demuestra la composición. Sustituye estados, copy y contratos por los del proyecto.</p></header>
+      <div class="wire-legend">La línea horizontal representa avance entre estados; no es un conector de arquitectura.</div>
+      <div class="wireflow" aria-label="Ejemplo de wireflow principal">
+        <article class="screen-case">
+          <div class="screen-label">01 · Entrada al flujo<small>La persona llega desde la acción real que origina el caso.</small></div>
+          <div class="device">
+            <div class="device-status">9:41</div><div class="device-appbar"></div>
+            <div class="device-body">
+              <div class="ui-icon"></div>
+              <h3>Configura esta preferencia</h3>
+              <p>Revisa la información antes de continuar. Este ejemplo no representa la interfaz final.</p>
+              <div class="ui-note">El cambio afecta el comportamiento futuro, no los datos históricos.</div>
+              <div class="ui-input"><label>CONTEXTO ACTUAL</label><span>Opción terminada en ••42</span></div>
+              <div class="ui-actions"><div class="ui-button primary">Continuar</div><div class="ui-button">Ahora no</div></div>
+            </div>
+          </div>
+          <div class="system-rail"><div class="system-hops"><div class="system-hop">UI<br>entry_point</div><div class="system-hop">Gateway<br>loadContext()</div><div class="system-hop">Policy<br>canStart()</div></div><div class="system-effect">Sin escritura · se evalúan precondiciones.</div></div>
+        </article>
+
+        <article class="screen-case">
+          <div class="screen-label">02 · Selección<small>Una sola acción principal y opciones comparables.</small></div>
+          <div class="device">
+            <div class="device-status">9:41</div><div class="device-appbar"></div>
+            <div class="device-body">
+              <div class="ui-icon"></div>
+              <h3>Elige una opción</h3>
+              <p>Solo una opción puede quedar activa. Los valores sensibles se muestran enmascarados.</p>
+              <div class="ui-card selected"><strong>Opción terminada en ••42</strong><br><small>Actual · disponible</small></div>
+              <div class="ui-card"><strong>Opción terminada en ••08</strong><br><small>Requiere verificación</small></div>
+              <div class="ui-card"><strong>Opción terminada en ••17</strong><br><small>No disponible</small></div>
+              <div class="ui-actions"><div class="ui-button primary">Usar la seleccionada</div><div class="ui-button">Volver</div></div>
+            </div>
+          </div>
+          <div class="system-rail"><div class="system-hops"><div class="system-hop">UI<br>select(option_ref)</div><div class="system-hop">Gateway<br>validateChoice()</div><div class="system-hop">Store<br>read version</div></div><div class="system-effect">Selección temporal · todavía no se confirma el cambio.</div></div>
+        </article>
+
+        <article class="screen-case">
+          <div class="screen-label">03 · Verificación<small>Challenge intermedio con error y reenvío posibles.</small></div>
+          <div class="device">
+            <div class="device-status">9:41</div><div class="device-appbar"></div>
+            <div class="device-body">
+              <div class="ui-icon"></div>
+              <h3>Confirma tu acción</h3>
+              <p>Enviamos un código al canal terminado en ••08.</p>
+              <div class="ui-otp"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="ui-note">El código vence en 04:32. Límites e intentos son parte de la regla técnica.</div>
+              <div class="ui-actions"><div class="ui-button primary">Verificar</div><div class="ui-button">Cancelar</div><div class="ui-link">Reenviar código</div></div>
+            </div>
+          </div>
+          <div class="system-rail"><div class="system-hops"><div class="system-hop">UI<br>submit(code)</div><div class="system-hop">Challenge<br>verify(ref)</div><div class="system-hop">Audit<br>record attempt</div></div><div class="system-effect">Challenge de un solo uso · no escribir el valor sensible en logs.</div></div>
+        </article>
+
+        <article class="screen-case">
+          <div class="screen-label">04 · Confirmación<small>Resultado, alcance y siguiente acción visibles.</small></div>
+          <div class="device">
+            <div class="device-status">9:41</div><div class="device-appbar"></div>
+            <div class="device-body">
+              <div class="ui-icon"></div>
+              <h3>Preferencia actualizada</h3>
+              <p>La opción terminada en ••08 quedó activa. El cambio será usado en las próximas operaciones.</p>
+              <div class="ui-list"><div class="ui-list-row"><strong>Anterior</strong><small>Terminada en ••42</small></div><div class="ui-list-row"><strong>Nueva</strong><small>Terminada en ••08</small></div></div>
+              <span class="ui-badge">OPERACIÓN REGISTRADA</span>
+              <div class="ui-actions"><div class="ui-button primary">Volver al inicio</div></div>
+            </div>
+          </div>
+          <div class="system-rail"><div class="system-hops"><div class="system-hop">Gateway<br>confirm(command)</div><div class="system-hop">Store<br>CAS version+1</div><div class="system-hop">Events<br>publish changed</div></div><div class="system-effect">Escritura idempotente · evento y audit_ref vinculados.</div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="flujos-alternativos">
+      <header class="section-head"><div><div class="eyebrow">Wireflow 2/2 · excepciones</div><h2>Errores recuperables y salida segura.</h2></div><p>Ubica las ramas bajo el flujo principal para que sigan siendo revisables sin convertir la línea principal en un árbol ilegible.</p></header>
+      <div class="wire-legend">Cada alternativa declara su efecto: reintento, recarga o escalamiento.</div>
+      <div class="wireflow" aria-label="Ejemplo de wireflow alternativo">
+        <article class="screen-case">
+          <div class="screen-label">A1 · Código inválido<small>La acción no se aplica y el usuario conserva control.</small></div>
+          <div class="device">
+            <div class="device-status">9:41</div><div class="device-appbar"></div>
+            <div class="device-body">
+              <div class="ui-icon"></div>
+              <h3>No pudimos verificar el código</h3>
+              <p>Revisa los dígitos o solicita uno nuevo. Ningún cambio fue aplicado.</p>
+              <div class="ui-note">Código incorrecto o vencido · copy conceptual.</div>
+              <div class="ui-otp"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="ui-actions"><div class="ui-button primary">Reintentar</div><div class="ui-button">Cancelar</div><div class="ui-link">Solicitar otro código</div></div>
+            </div>
+          </div>
+          <div class="system-rail"><div class="system-hops"><div class="system-hop">Challenge<br>FAILED</div><div class="system-hop">Rate limit<br>evaluate()</div><div class="system-hop">Audit<br>attempt + reason</div></div><div class="system-effect">Sin cambio de estado · límites sujetos a la política real.</div></div>
+        </article>
+
+        <article class="screen-case">
+          <div class="screen-label">A2 · Conflicto de versión<small>El estado cambió mientras el flujo estaba abierto.</small></div>
+          <div class="device">
+            <div class="device-status">9:41</div><div class="device-appbar"></div>
+            <div class="device-body">
+              <div class="ui-icon"></div>
+              <h3>La información cambió</h3>
+              <p>Actualiza la pantalla para revisar el estado más reciente antes de confirmar.</p>
+              <div class="ui-note">Evita sobrescribir una operación concurrente.</div>
+              <div class="ui-actions"><div class="ui-button primary">Actualizar y revisar</div><div class="ui-button">Salir sin cambios</div></div>
+            </div>
+          </div>
+          <div class="system-rail"><div class="system-hops"><div class="system-hop">Store<br>409 conflict</div><div class="system-hop">Gateway<br>discard draft</div><div class="system-hop">UI<br>reload state</div></div><div class="system-effect">Optimistic concurrency · nunca forzar sobrescritura desde la UI.</div></div>
+        </article>
+
+        <article class="screen-case">
+          <div class="screen-label">A3 · Sin recuperación automática<small>Escalamiento cuando continuar sería inseguro.</small></div>
+          <div class="device">
+            <div class="device-status">9:41</div><div class="device-appbar"></div>
+            <div class="device-body">
+              <div class="ui-icon"></div>
+              <h3>No podemos completar esta acción</h3>
+              <p>Tu estado anterior se mantiene. Contacta al canal definido e indica la referencia de atención.</p>
+              <div class="ui-field"><strong>Referencia</strong><br><small>CASE-••••-2048</small></div>
+              <div class="ui-actions"><div class="ui-button primary">Contactar soporte</div><div class="ui-button">Volver al inicio</div></div>
+            </div>
+          </div>
+          <div class="system-rail"><div class="system-hops"><div class="system-hop">Policy<br>manual_review</div><div class="system-hop">Case Mgmt<br>create ref</div><div class="system-hop">Audit<br>safe exit</div></div><div class="system-effect">Sin operación parcial · la referencia no revela datos sensibles.</div></div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer"><span><a href="diagrams.html">← Diagramas</a></span><span>Siguiente: <a href="page-patterns.html">Patrones de página →</a></span></footer>
+  </main>
+</body>
+</html>

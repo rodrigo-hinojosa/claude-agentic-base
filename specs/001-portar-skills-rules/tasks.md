@@ -60,9 +60,9 @@
 
 **Independent Test**: `node .claude/skills/visual-docs/tests/run-tests.mjs` pasa completo.
 
-- [ ] T022 [US3] Copiar el paquete completo `$CIAM/.claude/skills/visual-docs-ciam/` → `.claude/skills/visual-docs/` y actualizar rutas internas (`visual-docs-ciam` → `visual-docs`; referencia a `specs/024-visual-docs-ciam` en `tests/package-structure.test.mjs`)
-- [ ] T023 [US3] Ajustar `.claude/skills/visual-docs/SKILL.md`: frontmatter `name: visual-docs`, description sin remisiones a skills corporativas
-- [ ] T024 [US3] Ejecutar `node .claude/skills/visual-docs/tests/run-tests.mjs` y corregir hasta suite en verde; commit `feat: portar skill visual-docs con suite de tests`
+- [X] T022 [US3] Copiar el paquete completo `$CIAM/.claude/skills/visual-docs-ciam/` → `.claude/skills/visual-docs/` y actualizar rutas internas (`visual-docs-ciam` → `visual-docs`; referencia a `specs/024-visual-docs-ciam` en `tests/package-structure.test.mjs`)
+- [X] T023 [US3] Ajustar `.claude/skills/visual-docs/SKILL.md`: frontmatter `name: visual-docs`, description sin remisiones a skills corporativas
+- [X] T024 [US3] Ejecutar `node .claude/skills/visual-docs/tests/run-tests.mjs` y corregir hasta suite en verde; commit `feat: portar skill visual-docs con suite de tests`
 
 ## Phase 6: User Story 4 — Flujo de commit disciplinado y referencias extraídas (P3)
 

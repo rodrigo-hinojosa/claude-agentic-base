@@ -16,8 +16,9 @@ Configuración reutilizable de Claude Code empaquetada como **una sola carpeta `
 | `.claude/settings.json` | Sí | Permisos del proyecto (allow/ask/deny), compartidos con el equipo |
 | `.claude/settings.local.json.example` | Sí | Ejemplo de overrides personales (copiar a `settings.local.json`) |
 | `.claude/rules/` | Sí | Diez reglas 00-09: lenguaje y formato, anti-alucinación, documentación y entregables, seguridad, flujo y método, ramas y flujo SDD, nomenclatura agéntica, continuidad y contexto, interacción y decisiones, punteros y réplicas |
-| `.claude/skills/` | Sí | Estándar transversal: `confluence-docs`, `jira-management`, `visual-docs`; motor SDD `speckit-*` más `speckit-git-commit` |
-| `.claude/agents/` | Sí | Subagentes `revisor-codigo`, `documentador`, `arquitecto`, `revisor-proyecto` |
+| `.claude/skills/` | Sí | Estándar transversal: `confluence-docs`, `jira-management`, `visual-docs`, `development-repositories`; motor SDD `speckit-*` más `speckit-git-commit` |
+| `.claude/agents/` | Sí | Los tres agentes de rol del patrón plan→gate→ejecución: `product-owner`, `developer`, `atlassian-executor` |
+| `.claude/contracts/` | Sí | Autoridad runtime del patrón de escritura gobernada: `write-plan.md` (plan sellado por hash) y `publish-authorization.md` (autorización de push por rama) |
 | `.claude/output-styles/` | Sí | Estilos `socio-estrategico` y `redaccion-producto` |
 | `.claude/commands/` | Sí | README: formato de comandos heredado (se recomienda skills) |
 | `.claude/workflows/` | Sí | README: cómo se generan y guardan los dynamic workflows |
@@ -53,7 +54,7 @@ Luego:
 
 1. Edita `.claude/CLAUDE.md` y reemplaza los `[marcadores]`. O ejecuta `/init` para que Claude proponga un borrador a partir del código y refínalo.
 2. Ajusta los permisos de `.claude/settings.json`: `allow`/`ask` traen ejemplos seguros de git (solo lectura) a ampliar según tu stack — usa formas exactas y evita comodines que permitan encadenar comandos; el bloque `deny` (lectura de secretos) es universal y conviene mantenerlo.
-3. Edita o elimina los ejemplos: `agents/revisor-proyecto`, `output-styles/redaccion-producto`, `commands/README.md`, `workflows/README.md`.
+3. Edita o elimina los ejemplos: `output-styles/redaccion-producto`, `commands/README.md`, `workflows/README.md`.
 4. Revisa `.mcp.json`: trae el servidor `atlassian` (MCP oficial de Atlassian, OAuth). Autorízalo con `/mcp` dentro de una sesión de Claude Code; el sitio y el `cloudId` se resuelven en runtime y nunca se escriben en el repo. Agrega otros servidores según tu stack, por ejemplo:
 
    ```json
@@ -66,12 +67,14 @@ Luego:
    ```
 
 5. Configura los parámetros por proyecto de las skills de Atlassian (sección "Parámetros por proyecto" en `confluence-docs/SKILL.md` y `jira-management/SKILL.md`): espacio de Confluence, proyecto y tablero de Jira, tipo de issue gestionado, labels. En la plantilla vienen como `Pendiente de configurar`.
+6. Si vas a usar el patrón plan→gate→ejecución, completa la misma sección "Parámetros por proyecto" en `agents/product-owner.md` y `agents/developer.md` (tablero de gestión, tablero secundario opcional, espacio Confluence, página de roster), y las filas de tablero del catálogo de `.claude/contracts/write-plan.md`.
+7. Si vas a usar `developer`, puebla el catálogo `skills/development-repositories/repositories.md` siguiendo su §9 (viene vacío, con procedimiento).
 
 Verifica dentro de una sesión de Claude Code:
 
 - `/memory` → confirma que `.claude/CLAUDE.md` y las `rules/` se cargan.
-- Escribe `/` → deberían aparecer `confluence-docs`, `jira-management`, `visual-docs` y las `speckit-*` (son skills).
-- `/agents` → `revisor-codigo`, `documentador`, `arquitecto`, `revisor-proyecto`.
+- Escribe `/` → deberían aparecer `confluence-docs`, `jira-management`, `visual-docs`, `development-repositories` y las `speckit-*` (son skills).
+- `/agents` → `product-owner`, `developer`, `atlassian-executor`.
 - `/config` → **Output style** → `Socio estratégico` y `Redacción de producto` seleccionables.
 
 > Reinicia Claude Code tras copiar la carpeta para que detecte los directorios nuevos.
@@ -89,6 +92,7 @@ La invocación `/<nombre>` proviene del nombre del directorio (`skills/visual-do
 | `/confluence-docs [modo + insumo]` | Estándar de documentación en cuatro modos: genera, audita, consulta y publica en Confluence con gate de aprobación. Trae catálogo de reglas (`rules.md`) y plantillas de entregable (`templates.md`) |
 | `/jira-management [modo + insumo]` | Gestión del tablero Jira en seis modos: redactar, crear, mover, editar, auditar y consultar, con gate por operación de escritura y trampas de JQL documentadas (`references/jql-traps.md`) |
 | `/visual-docs [tema + destino]` | Sitios HTML de revisión técnica navegables por `file://`, con sistema de diagramas y wireframes; incluye scripts y suite de tests propia |
+| `/development-repositories [modo + insumo]` | Catálogo de repositorios de desarrollo y QA del proyecto, en cuatro modos: consultar (repositorios y specs abiertas), preparar/actualizar el workspace multi-repo local (8 scripts bash), especificar (abre la spec de un desarrollo) y sincronizar (divergencias contra la fuente, sin aplicarlas) |
 | `/speckit-git-commit` | Commit disciplinado de la feature SDD activa: staging acotado, bloqueo en `main`, detención ante secretos, sin push |
 
 Las skills de Atlassian usan el servidor `atlassian` de `.mcp.json` y declaran sus parámetros por proyecto como `Pendiente de configurar`.
@@ -101,14 +105,19 @@ El repo integra spec-kit v0.13.0 con sus skills `speckit-*`: `constitution`, `sp
 
 ## Subagentes incluidos
 
-| Subagente | Para qué |
-| --- | --- |
-| `revisor-codigo` | Revisión de calidad y seguridad (solo lectura) |
-| `documentador` | Genera o mejora documentación a partir del código |
-| `arquitecto` | Análisis de diseño, trade-offs y ADR (solo lectura) |
-| `revisor-proyecto` | Revisor de ejemplo de proyecto (solo lectura); ajústalo o elimínalo |
+Esta plantilla versiona **tres agentes de rol**, el patrón de gobernanza plan→gate→ejecución para escritura delegada a Jira y Confluence:
 
-Invócalos por lenguaje natural ("usa el subagente revisor-codigo en los cambios recientes") o con `@`.
+| Agente | Rol | Para qué |
+| --- | --- | --- |
+| `product-owner` | Productor de planes | Revisa el tablero de gestión y la documentación de Confluence con criterio de producto; nunca escribe directo — produce un plan de escritura |
+| `developer` | Productor de planes | Abre desarrollos de punta a punta (rama, spec, commit acotado, índice); gestiona su ciclo de vida; publica solo con autorización de publicación válida |
+| `atlassian-executor` | Ejecutor | Ejecuta un plan ya sellado por hash contra el catálogo cerrado de `.claude/contracts/write-plan.md`; nunca decide contenido |
+
+`product-owner` y `developer` no ocupan un rol de un roster propio: al adoptar la plantilla en un proyecto concreto se renombran a `<rol>-<proyecto>` y se reconcilian con el roster real (regla `06-nomenclatura-agentica.md`). Cada uno trae su sección "Parámetros por proyecto" con los valores `Pendiente de configurar`.
+
+**Esta plantilla no versiona subagentes genéricos de exploración o revisión** (tipo `revisor-codigo`, `documentador`, `arquitecto`). Si tu configuración personal de Claude Code los provee (`~/.claude-personal/agents/` o equivalente), siguen disponibles en cualquier proyecto sin que este repositorio los duplique; la regla `04-flujo-y-metodo.md` los cita por esa procedencia, declarando que no son artefactos garantizados de la plantilla.
+
+Invócalos por lenguaje natural ("usa el agente developer para abrir el desarrollo de ABC-123") o con `@`.
 
 ---
 

@@ -68,3 +68,14 @@ Veredicto: **scripts operativos de punta a punta sobre el fixture**, resultados 
 ## Punteros de US2 (quickstart §6)
 
 **Fecha**: 07-09-2026. Dos barridos ejecutados sobre `developer.md`, ambos contracts vivos y `SKILL.md`: rutas citadas en prosa (enumeradas y verificadas con `test -e`) y enlaces markdown relativos (resueltos respecto del directorio de cada archivo, script en Python). Ambos en cero rotos.
+
+## US3. Retiro de genéricos y coherencia (SC-006, quickstart §7)
+
+**Fecha**: 07-09-2026. `.claude/agents/` contiene exactamente `product-owner.md`, `atlassian-executor.md`, `developer.md` (verificado con `ls`). Dos verificaciones distintas, según el vocabulario que la clarificación del 07-09-2026 fijó:
+
+- `grep -rn 'revisor-proyecto' .claude/ README.md` → cero fuera de `specs/` (el nombre no tiene equivalente en la configuración personal del usuario y se retira sin dejar rastro fuera de la traza de esta feature).
+- `grep -n 'arquitecto\|documentador\|revisor-codigo' .claude/rules/04-flujo-y-metodo.md README.md` → ambas ocurrencias declaran explícitamente que esos tres agentes provienen de la configuración personal de quien opera (`~/.claude-personal/agents/`, hallazgo verificado en la fase clarify) y no son artefactos de la plantilla.
+
+Punteros markdown de `README.md` y `04-flujo-y-metodo.md`: todos resuelven.
+
+Veredicto: SC-006 cumplido con el vocabulario corregido — la spec original (antes de la clarificación) pedía "grep cero" para los cuatro nombres; eso habría sido incorrecto para los tres que sí siguen disponibles.

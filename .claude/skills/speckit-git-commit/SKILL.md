@@ -4,7 +4,7 @@ description: Commitear los cambios de la feature SDD activa, con staging acotado
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: claude-agentic-base
-  source: df-ciam-workspace:skills/speckit-git-commit (adaptada 2026-09-06)
+  source: workspace de origen, skill speckit-git-commit (adaptada 2026-09-06; procedencia completa en specs/001-portar-skills-rules/research.md)
 ---
 
 # Commit de la feature activa

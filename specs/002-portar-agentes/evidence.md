@@ -12,8 +12,8 @@ Dos reglas gobiernan este archivo:
 | Evidencia | Qué cubre | Fase | Estado |
 | --- | --- | --- | --- |
 | E1 | Ida y vuelta del hash de `write-plan` (quickstart §3) | US1 | Registrada |
-| E2 | Verificación tipada de `publish-authorization` (quickstart §4) | US2 | Pendiente |
-| E3 | Scripts de `development-repositories`: sintaxis, barrido y corrida funcional (quickstart §5) | US2 | Pendiente |
+| E2 | Verificación tipada de `publish-authorization` (quickstart §4) | US2 | Registrada |
+| E3 | Scripts de `development-repositories`: sintaxis, barrido y corrida funcional (quickstart §5) | US2 | Registrada |
 | E4 | Corrida completa del quickstart §1-§8 | Polish | Pendiente |
 
 Cada evidencia se registra al cerrar su fase, con la fecha y el comando que la produjo.
@@ -35,3 +35,36 @@ Complementario a la barrera del hash: quickstart §1 (dos barridos corporativos,
 **Veredicto**: ida y vuelta OK — los dos comportamientos que el contract promete se observaron en esta corrida, no se citan de la anterior (D7/D8 de research.md).
 
 **Nota de mantenimiento**: `write-plan.md` línea 53 cita la evidencia de la prueba anterior (06-09-2026). Al commitear US1 se actualiza esa cita a esta fecha y a estos hashes, para que el contract remita a la corrida que realmente lo verificó.
+
+## E2. Verificación tipada de publish-authorization (US2 escenario 5, quickstart §4)
+
+**Fecha**: 07-09-2026. **Material**: verificador sintético (`/private/tmp/.../scratchpad/verify-publish-auth.sh`) que aplica las verificaciones 1-6 del contract `.claude/contracts/publish-authorization.md` sobre bloques generados con `shasum -a 256` de la línea canónica `clave|repositorio|rama|fecha`. Las verificaciones 7-9 exigen estado git de una corrida real del agente y quedan fuera del alcance sintético — se declara, no se finge cobertura.
+
+| Caso | Bloque | Clasificación esperada | Observada |
+| --- | --- | --- | --- |
+| A | Completo y consistente con la pieza operada | vigente (1-6 en verde) | vigente |
+| B | Invocación sin bloque | `ausente` | `ausente` |
+| C | Sin campo `fecha` | `malformada` (verificación 2) | `malformada` |
+| D | Hash alterado en un carácter | `malformada` (verificación 3) | `malformada` |
+| E | Hash internamente consistente, `rama` distinta de la operada | `no coincide` (verificación 5) | `no coincide` |
+| F | "haz push de la rama" en prosa | `ausente` (sin forma ni hash) | `ausente` |
+
+Veredicto: **6/6 casos clasifican con su nombre tipado**, en el orden del contract (la primera falla detiene y clasifica). Coincide con el vocabulario corregido en `data-model.md` (hash alterado = `malformada`, no `no coincide`).
+
+## E3. Scripts de development-repositories (SC-004, quickstart §5)
+
+**Fecha**: 07-09-2026.
+
+- **Sintaxis**: `bash -n` sobre los 8 scripts de `.claude/skills/development-repositories/scripts/` — 8/8 OK.
+- **Barrido corporativo**: `grep -rliE 'df-ciam|ciam|cencosud|cencoflow|e98853f7'` sobre los 19 archivos de la skill — cero coincidencias.
+- **Consistencia de identificadores**: `REPOS_ROOT`/`REPOS_CATALOG` con el mismo nombre en los scripts, `SKILL.md` y `layout.md`.
+- **Corrida funcional contra catálogo sintético**: raíz de fixtures armada con la receta de `examples/test-catalog.md` §3, en el scratchpad de la sesión (fuera del árbol del workspace). `run-across-repos.sh` ejecutado con `--catalog` y `--root`:
+  - `status`: las 5 filas clasifican exactamente como la tabla de §4 del fixture — limpio/`al día`, atrasado figura `al día` antes del fetch (correcto por diseño), sucio/`con cambios sin guardar`, vacío/`sin commits` con rama resuelta por `symbolic-ref`, ausente/`error: no está clonado` — y la corrida sale con **código 2**.
+  - `fetch`: revela `atrasado` en `Respecto del remoto`; 4/5 operados.
+  - `pull`: `actualizado` solo el atrasado (verificado: quedó en `commit posterior`), `saltado (cambios sin guardar)` el sucio con su contenido local intacto, `saltado (sin upstream)` el vacío, error el ausente; 2/5 operados.
+
+Veredicto: **scripts operativos de punta a punta sobre el fixture**, resultados idénticos a los que el propio fixture declara esperados. Límites que el fixture declara fuera de su alcance (red, colisión de ruta destino en `prepare-workspace.sh`) siguen sin cubrir, y se declaran, no se disimulan.
+
+## Punteros de US2 (quickstart §6)
+
+**Fecha**: 07-09-2026. Dos barridos ejecutados sobre `developer.md`, ambos contracts vivos y `SKILL.md`: rutas citadas en prosa (enumeradas y verificadas con `test -e`) y enlaces markdown relativos (resueltos respecto del directorio de cada archivo, script en Python). Ambos en cero rotos.

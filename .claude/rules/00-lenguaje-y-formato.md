@@ -1,6 +1,6 @@
 # Lenguaje y formato
 
-<!-- Sin frontmatter `paths`: regla global, se aplica en todas las sesiones. -->
+<!-- Sin frontmatter `paths`: aplica a toda sesión sobre este repositorio. -->
 
 ## Idioma
 
@@ -13,7 +13,20 @@
 - Markdown estructurado: encabezados jerárquicos, listas, tablas y bloques de código con lenguaje declarado.
 - Bloques listos para copiar y pegar cuando el contenido es reutilizable (comandos, plantillas, configuraciones).
 - Tablas para comparaciones, matrices de decisión y datos estructurados.
-- **Sin emojis decorativos** en ningún contexto (respuestas, código, commits, documentación, tickets).
+
+## Estilo visual
+
+- **Sin emojis** en ningún contexto: respuestas, código, commits, documentación, tickets.
+- No los uses en encabezados de ningún nivel (H1–H6) ni como parte de un título.
+- No los antepongas a bullets, listas ni ítems. Nada de `✅`, `🔬`, `🔑` o `📌` abriendo una línea.
+- Para destacar estados o categorías usa texto (`Pendiente`, `Validado`, `En curso`) o formato Markdown: negritas, código inline, tablas.
+- Un ícono solo es admisible si lo pido de forma explícita, o si forma parte literal de un contenido que se está citando.
+
+### Fechas
+
+- **En prosa dirigida a personas**: `DD-MM-YYYY`, y `DD-MM-YYYY hh:mm:ss` cuando la hora importa. Hora local de Santiago de Chile.
+- **En identificadores, nombres de archivo, nombres de directorio y campos de metadato**: ISO 8601 (`YYYY-MM-DD`, o `YYYYMMDD` si el identificador no admite separadores). Ahí la ordenación lexicográfica coincide con la cronológica, y de eso dependen numeraciones, trazas y ordenamientos.
+- Criterio para resolver el caso dudoso: si algo se ordena, se busca o se referencia por ese campo, es identificador.
 
 ## Estilo de redacción
 

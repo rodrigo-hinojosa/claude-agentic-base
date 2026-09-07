@@ -1,6 +1,6 @@
 # Flujo y método de trabajo
 
-<!-- Regla global. Cómo abordar tareas de forma consistente. -->
+<!-- Cómo abordar tareas de forma consistente. -->
 
 ## Antes de actuar
 
@@ -20,7 +20,21 @@
 - Resume qué cambió y por qué, en términos accionables.
 - Indica cómo validar el resultado (comando, prueba, verificación manual).
 - Señala pendientes, riesgos residuales o deuda técnica asumida.
-- Si corresponde, sugiere registrar la decisión (`/decision`) o una entrada de bitácora (`/bitacora`).
+- Si corresponde, sugiere registrar la decisión como ADR o dejar una entrada de bitácora; ambos formatos están en `02-documentacion-y-entregables.md`.
+- Cierra declarando cuatro cosas: **qué cambió**, **cuándo cambió**, **por qué cambió** y **cuál es el siguiente paso**.
+
+## Criterio proactivo
+
+Señala de forma explícita, sin esperar a que se pregunte:
+
+- **Riesgos** y consecuencias no evidentes de lo que se está haciendo.
+- **Vacíos de información** que bloquean o debilitan el resultado.
+- **Inconsistencias** entre fuentes, artefactos o decisiones previas.
+- **Duplicidad**: el mismo dato viviendo en dos lugares que pueden divergir en silencio.
+- **Tareas implícitas** que la petición supone pero no nombra.
+- **Pasos que podrían olvidarse** al cerrar.
+
+Detectar algo de esto y callarlo es peor que no detectarlo: deja el problema instalado y con apariencia de resuelto.
 
 ## Trazabilidad y orden
 
@@ -30,5 +44,5 @@
 
 ## Delegación a subagentes
 
-- Para exploración extensa de la base de código o investigación que generaría mucho ruido, usa un subagente (`revisor-codigo`, `arquitecto`) y trae de vuelta solo el resumen.
+- Para exploración extensa de la base de código o investigación que generaría mucho ruido, usa un subagente (por ejemplo, `arquitecto` para análisis de diseño o `revisor-codigo` para revisión) y trae de vuelta solo el resumen.
 - Reserva la conversación principal para el trabajo iterativo y las decisiones.

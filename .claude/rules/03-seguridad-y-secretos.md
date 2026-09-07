@@ -1,6 +1,6 @@
 # Seguridad y secretos
 
-<!-- Regla global. Las reglas duras de bloqueo viven en settings.json (permissions.deny). Esto es la guía de conducta. -->
+<!-- Las reglas duras de bloqueo viven en settings.json (permissions.deny). Esto es la guía de conducta. -->
 
 ## Secretos y credenciales
 

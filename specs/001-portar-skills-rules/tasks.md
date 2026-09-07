@@ -41,16 +41,18 @@
 
 **Independent Test**: greps de SC-005 en cero; frontmatter con `name`/`description`; sección de parámetros presente en ambas skills.
 
-- [ ] T014 [P] [US2] Portar `$CIAM/.claude/skills/confluence-ciam/SKILL.md` → `.claude/skills/confluence-docs/SKILL.md` según research.md (frontmatter con `name: confluence-docs`, allowed-tools `mcp__atlassian__*` del Contrato 1, cloudId en runtime, espacio como parámetro pendiente, sección Parámetros por proyecto del Contrato 4)
-- [ ] T015 [P] [US2] Portar `$CIAM/.claude/skills/confluence-ciam/reglas.md` → `.claude/skills/confluence-docs/reglas.md` (regla 14 parametrizada, regla 12 remite a `jira-management`, línea base de prosa `Pendiente de recomputar`, sin rutas del origen)
-- [ ] T016 [P] [US2] Portar `$CIAM/.claude/skills/confluence-ciam/templates.md` → `.claude/skills/confluence-docs/templates.md` (título neutro, sin filas de board; 4 plantillas íntegras)
-- [ ] T017 [P] [US2] Portar los 5 ejemplos de `$CIAM/.claude/skills/confluence-ciam/ejemplos/` → `.claude/skills/confluence-docs/ejemplos/` (anonimizar `conforme.md`, limpiar `estructurado.md`; `con-violaciones.md` y `prose-*.md` directos); **no** portar `template-history.md`
-- [ ] T018 [P] [US2] Reescribir `$CIAM/.claude/skills/jira-ciam-management/SKILL.md` → `.claude/skills/jira-management/SKILL.md` parametrizada según research.md (6 modos, gate por operación, secuencia leer→componer→escribir→releer con advertencia de labels, tabla permisos vs. proceso, sección Parámetros por proyecto con procedimientos de descubrimiento, tools del Contrato 1, puntero a `referencias/jql-trampas.md`)
-- [ ] T019 [P] [US2] Extraer §10 de `$CIAM/.claude/skills/jira-ciam-management/estandar-tablero.md` → `.claude/skills/jira-management/referencias/jql-trampas.md` (7 trampas genéricas, taxonomía error/vacío/plausible, disciplina de censo; sin claves ni cifras del origen)
-- [ ] T020 [P] [US2] Portar `tarea-conforme.md` y `tarea-con-desvios.md` de `$CIAM/.claude/skills/jira-ciam-management/ejemplos/` → `.claude/skills/jira-management/ejemplos/` (labels y claves neutras); **no** portar `consulta-por-estado.md`
-- [ ] T021 [US2] Verificar US2: greps de SC-005 y barrido corporativo cero sobre ambas skills, frontmatter válido; commit `feat: portar skills confluence-docs y jira-management parametrizadas`
+- [X] T014 [P] [US2] Portar `$CIAM/.claude/skills/confluence-ciam/SKILL.md` → `.claude/skills/confluence-docs/SKILL.md` según research.md (frontmatter con `name: confluence-docs`, allowed-tools `mcp__atlassian__*` del Contrato 1, cloudId en runtime, espacio como parámetro pendiente, sección Parámetros por proyecto del Contrato 4)
+- [X] T015 [P] [US2] Portar `$CIAM/.claude/skills/confluence-ciam/reglas.md` → `.claude/skills/confluence-docs/reglas.md` (regla 14 parametrizada, regla 12 remite a `jira-management`, línea base de prosa `Pendiente de recomputar`, sin rutas del origen)
+- [X] T016 [P] [US2] Portar `$CIAM/.claude/skills/confluence-ciam/templates.md` → `.claude/skills/confluence-docs/templates.md` (título neutro, sin filas de board; 4 plantillas íntegras)
+- [X] T017 [P] [US2] Portar los 5 ejemplos de `$CIAM/.claude/skills/confluence-ciam/ejemplos/` → `.claude/skills/confluence-docs/ejemplos/` (anonimizar `conforme.md`, limpiar `estructurado.md`; `con-violaciones.md` y `prose-*.md` directos); **no** portar `template-history.md`
+- [X] T018 [P] [US2] Reescribir `$CIAM/.claude/skills/jira-ciam-management/SKILL.md` → `.claude/skills/jira-management/SKILL.md` parametrizada según research.md (6 modos, gate por operación, secuencia leer→componer→escribir→releer con advertencia de labels, tabla permisos vs. proceso, sección Parámetros por proyecto con procedimientos de descubrimiento, tools del Contrato 1, puntero a `referencias/jql-trampas.md`)
+- [X] T019 [P] [US2] Extraer §10 de `$CIAM/.claude/skills/jira-ciam-management/estandar-tablero.md` → `.claude/skills/jira-management/referencias/jql-trampas.md` (7 trampas genéricas, taxonomía error/vacío/plausible, disciplina de censo; sin claves ni cifras del origen)
+- [X] T020 [P] [US2] Portar `tarea-conforme.md` y `tarea-con-desvios.md` de `$CIAM/.claude/skills/jira-ciam-management/ejemplos/` → `.claude/skills/jira-management/ejemplos/` (labels y claves neutras); **no** portar `consulta-por-estado.md`
+- [X] T021 [US2] Verificar US2: greps de SC-005 y barrido corporativo cero sobre ambas skills, frontmatter válido; commit `feat: portar skills confluence-docs y jira-management parametrizadas`
 
 **Checkpoint**: US2 probada en modo consulta requiere OAuth del dueño (SC-006, quickstart §6) — fuera de sesión.
+
+> **Desviación registrada (06-09-2026)**: los archivos internos de las skills se portaron con nombre en inglés — `rules.md`, `templates.md`, `examples/` (con `compliant-adr.md`, `seeded-violations.md`, `structured-doc.md`, `prose-*.md`, `task-compliant.md`, `task-with-deviations.md`) y `references/jql-traps.md` — en vez de los nombres en español que estas tareas anticipaban (`reglas.md`, `ejemplos/`, `referencias/jql-trampas.md`). Motivo: la regla `06-nomenclatura-agentica.md` portada en US1 exige inglés en archivos internos de skills, y el workspace origen tenía esos mismos nombres anotados como deuda; portarlos en español habría importado la deuda a sabiendas.
 
 ## Phase 5: User Story 3 — Documentación visual portable (P2)
 

@@ -16,7 +16,7 @@ Configuración reutilizable de Claude Code empaquetada como **una sola carpeta `
 | `.claude/settings.json` | Sí | Permisos del proyecto (allow/ask/deny), compartidos con el equipo |
 | `.claude/settings.local.json.example` | Sí | Ejemplo de overrides personales (copiar a `settings.local.json`) |
 | `.claude/rules/` | Sí | Diez reglas 00-09: lenguaje y formato, anti-alucinación, documentación y entregables, seguridad, flujo y método, ramas y flujo SDD, nomenclatura agéntica, continuidad y contexto, interacción y decisiones, punteros y réplicas |
-| `.claude/skills/` | Sí | Estándar transversal: `confluence-docs`, `jira-management`, `visual-docs`; utilitarias `/ticket`, `/resumen`, `/documentar`, `/bitacora`, `/decision`; motor SDD `speckit-*` más `speckit-git-commit`; y `ejemplo-skill` |
+| `.claude/skills/` | Sí | Estándar transversal: `confluence-docs`, `jira-management`, `visual-docs`; motor SDD `speckit-*` más `speckit-git-commit` |
 | `.claude/agents/` | Sí | Subagentes `revisor-codigo`, `documentador`, `arquitecto`, `revisor-proyecto` |
 | `.claude/output-styles/` | Sí | Estilos `socio-estrategico` y `redaccion-producto` |
 | `.claude/commands/` | Sí | README: formato de comandos heredado (se recomienda skills) |
@@ -53,7 +53,7 @@ Luego:
 
 1. Edita `.claude/CLAUDE.md` y reemplaza los `[marcadores]`. O ejecuta `/init` para que Claude proponga un borrador a partir del código y refínalo.
 2. Ajusta los permisos de `.claude/settings.json`: `allow`/`ask` traen ejemplos seguros de git (solo lectura) a ampliar según tu stack — usa formas exactas y evita comodines que permitan encadenar comandos; el bloque `deny` (lectura de secretos) es universal y conviene mantenerlo.
-3. Edita o elimina los ejemplos: `skills/ejemplo-skill`, `agents/revisor-proyecto`, `output-styles/redaccion-producto`, `commands/README.md`, `workflows/README.md`.
+3. Edita o elimina los ejemplos: `agents/revisor-proyecto`, `output-styles/redaccion-producto`, `commands/README.md`, `workflows/README.md`.
 4. Revisa `.mcp.json`: trae el servidor `atlassian` (MCP oficial de Atlassian, OAuth). Autorízalo con `/mcp` dentro de una sesión de Claude Code; el sitio y el `cloudId` se resuelven en runtime y nunca se escriben en el repo. Agrega otros servidores según tu stack, por ejemplo:
 
    ```json
@@ -70,7 +70,7 @@ Luego:
 Verifica dentro de una sesión de Claude Code:
 
 - `/memory` → confirma que `.claude/CLAUDE.md` y las `rules/` se cargan.
-- Escribe `/` → deberían aparecer `ticket`, `resumen`, `documentar`, `bitacora`, `decision`, `confluence-docs`, `jira-management`, `visual-docs` y las `speckit-*` (son skills).
+- Escribe `/` → deberían aparecer `confluence-docs`, `jira-management`, `visual-docs` y las `speckit-*` (son skills).
 - `/agents` → `revisor-codigo`, `documentador`, `arquitecto`, `revisor-proyecto`.
 - `/config` → **Output style** → `Socio estratégico` y `Redacción de producto` seleccionables.
 
@@ -80,7 +80,7 @@ Verifica dentro de una sesión de Claude Code:
 
 ## Skills incluidas (comandos `/`)
 
-La invocación `/<nombre>` proviene del nombre del directorio (`skills/ticket/` → `/ticket`).
+La invocación `/<nombre>` proviene del nombre del directorio (`skills/visual-docs/` → `/visual-docs`).
 
 ### Estándar transversal
 
@@ -93,15 +93,7 @@ La invocación `/<nombre>` proviene del nombre del directorio (`skills/ticket/` 
 
 Las skills de Atlassian usan el servidor `atlassian` de `.mcp.json` y declaran sus parámetros por proyecto como `Pendiente de configurar`.
 
-### Utilitarias
-
-| Skill | Para qué |
-| --- | --- |
-| `/ticket [descripción]` | Genera un ticket de Jira completo (título, contexto, criterios de aceptación, notas técnicas) |
-| `/resumen [texto o tema]` | Resumen ejecutivo orientado a decisión |
-| `/documentar [archivo/módulo/tema]` | Documentación técnica basada en el código real |
-| `/bitacora [qué se hizo]` | Entrada de bitácora trazable (inyecta fecha y `git status`) |
-| `/decision [decisión + contexto]` | Registro de decisión arquitectónica (ADR) |
+Las skills utilitarias (`/ticket`, `/resumen`, `/documentar`, `/bitacora`, `/decision`) no viven en esta base: si existen en la configuración personal de quien trabaja, las reglas las citan solo como **atajo opcional** — su ausencia no exime de cumplir el formato de `confluence-docs/templates.md` y su presencia no lo reemplaza (regla `06-nomenclatura-agentica.md`, Excepciones).
 
 ### Flujo SDD (spec-kit)
 

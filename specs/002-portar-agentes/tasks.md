@@ -76,8 +76,8 @@
 
 ## Phase 6: Polish y cierre
 
-- [ ] T022 Ejecutar el quickstart completo (§1 a §8) sobre el estado final del repositorio y corregir las desviaciones que aparezcan, sin declarar como cubierto lo que quede fuera de alcance
-- [ ] T023 Completar `specs/002-portar-agentes/evidence.md` con E4 (resultado de la corrida completa) y cerrar el estado de las cuatro evidencias
+- [X] T022 Ejecutar el quickstart completo (§1 a §8) sobre el estado final del repositorio y corregir las desviaciones que aparezcan, sin declarar como cubierto lo que quede fuera de alcance
+- [X] T023 Completar `specs/002-portar-agentes/evidence.md` con E4 (resultado de la corrida completa) y cerrar el estado de las cuatro evidencias
 - [ ] T024 Actualizar la memoria de continuidad del proyecto (estado del feature 002) y commitear con mensaje `docs: evidencia de validación del feature 002`; reportar el cierre al dueño dejando push, PR y merge a su confirmación explícita (SC-007)
 
 ## Dependencies

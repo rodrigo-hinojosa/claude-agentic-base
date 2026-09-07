@@ -14,7 +14,7 @@ Dos reglas gobiernan este archivo:
 | E1 | Ida y vuelta del hash de `write-plan` (quickstart §3) | US1 | Registrada |
 | E2 | Verificación tipada de `publish-authorization` (quickstart §4) | US2 | Registrada |
 | E3 | Scripts de `development-repositories`: sintaxis, barrido y corrida funcional (quickstart §5) | US2 | Registrada |
-| E4 | Corrida completa del quickstart §1-§8 | Polish | Pendiente |
+| E4 | Corrida completa del quickstart §1-§8 | Polish | Registrada |
 
 Cada evidencia se registra al cerrar su fase, con la fecha y el comando que la produjo.
 
@@ -79,3 +79,22 @@ Veredicto: **scripts operativos de punta a punta sobre el fixture**, resultados 
 Punteros markdown de `README.md` y `04-flujo-y-metodo.md`: todos resuelven.
 
 Veredicto: SC-006 cumplido con el vocabulario corregido — la spec original (antes de la clarificación) pedía "grep cero" para los cuatro nombres; eso habría sido incorrecto para los tres que sí siguen disponibles.
+
+## E4. Corrida completa del quickstart §1-§8 (Polish)
+
+**Fecha**: 07-09-2026, sobre el estado final consolidado del repositorio (commit `4974d54` y siguientes de esta fase).
+
+| Sección | Resultado |
+| --- | --- |
+| §1 Barrido corporativo | Dos `grep` sobre `.claude/` y `README.md` — exit 1 en ambos |
+| §2 Estado de agentes y contracts | `.claude/agents/` = exactamente `product-owner.md`, `atlassian-executor.md`, `developer.md`; `.claude/contracts/` = exactamente `write-plan.md`, `publish-authorization.md`; los 3 frontmatter conformes al Contrato 1 |
+| §3 Hash de write-plan | Sin cambios desde E1; la cita en `write-plan.md` línea 53 sigue apuntando a esta corrida (07-09-2026) |
+| §4 Verificación tipada de publish-authorization | Sin cambios desde E2; verificador sintético sigue disponible y sus 6 casos siguen vigentes |
+| §5 Scripts | `bash -n` 8/8 OK sobre el estado final; barrido corporativo limpio |
+| §6 Punteros | Barrido ampliado a `README.md` y `04-flujo-y-metodo.md` además de agentes y contracts — todas las rutas resuelven |
+| §7 Retiro de genéricos | `revisor-proyecto` cero fuera de `specs/`; 4 ocurrencias de los otros 3 (2 en cada archivo), todas con "configuración personal" en la misma frase |
+| §8 Trazabilidad | 8 commits en `002-portar-agentes` desde el reinicio; `main` intacto en `d55dff8` (merge del feature 001) |
+
+**Veredicto**: quickstart completo sin desviaciones. No se declaran hallazgos nuevos — el diseño (research.md D8) y las correcciones aplicadas durante clarify y plan sostuvieron su verificación hasta el cierre.
+
+**Límites que siguen declarados y no se disimulan** (research.md, quickstart.md): la corrida funcional de los scripts no ejercita red ni la colisión de ruta destino de `prepare-workspace.sh`; las verificaciones 7-9 de `publish-authorization` (estado git de una corrida real) no se cubrieron con sintéticos; los acoplamientos no parametrizables de los scripts, si los hay, quedan documentados en la propia skill y no en esta evidencia.

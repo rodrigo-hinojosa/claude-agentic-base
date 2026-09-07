@@ -35,7 +35,7 @@
 - [X] T005 [P] [US1] Recuperar `.claude/agents/atlassian-executor.md` del respaldo y verificarlo contra el escenario 3 de US1: declaración de clase ejecutora conforme a `.claude/rules/06-nomenclatura-agentica.md`, 9 tools con prefijo `mcp__atlassian__`, `model: sonnet`, protocolo ordenado de verificación (marca presente → bien formada → hash vigente → alcance total → catálogo por operación) y reporte con lectura real post-escritura
 - [X] T006 [P] [US1] Recuperar la edición de `.claude/skills/confluence-docs/SKILL.md` del respaldo (§6, modo publicar) y verificar el escenario 5 de US1: documenta la equivalencia entre plan sellado con hash aprobado y aprobación explícita del gate, citando `.claude/contracts/write-plan.md` sin replicarlo
 - [X] T007 [US1] Ejecutar las verificaciones de US1 y registrar E1 en `specs/002-portar-agentes/evidence.md`: quickstart §1 (barridos en cero sobre los archivos tocados), §2 (frontmatter de los dos agentes y contenido de `.claude/contracts/`) y §3 (ida y vuelta del hash con plan sintético en el scratchpad — los tres hashes: borrador, tras la marca, tras alterar)
-- [ ] T008 [US1] Commit de US1 con mensaje `feat: portar patrón plan-gate-ejecución (product-owner, atlassian-executor, write-plan)`, staging acotado a los 4 archivos de la historia más `evidence.md`
+- [X] T008 [US1] Commit de US1 con mensaje `feat: portar patrón plan-gate-ejecución (product-owner, atlassian-executor, write-plan)`, staging acotado a los 4 archivos de la historia más `evidence.md`
 
 **Checkpoint**: US1 entregable por sí sola. Detenerse y reportar al dueño.
 

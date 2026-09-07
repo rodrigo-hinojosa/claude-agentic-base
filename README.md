@@ -15,18 +15,20 @@ Configuración reutilizable de Claude Code empaquetada como **una sola carpeta `
 | `.claude/CLAUDE.md` | Sí | Plantilla de contexto y estándares del proyecto (reemplaza los `[marcadores]`) |
 | `.claude/settings.json` | Sí | Permisos del proyecto (allow/ask/deny), compartidos con el equipo |
 | `.claude/settings.local.json.example` | Sí | Ejemplo de overrides personales (copiar a `settings.local.json`) |
-| `.claude/rules/` | Sí | Reglas por tema (lenguaje, anti-alucinación, documentación, seguridad, flujo) + una de ejemplo por ruta (`paths`) |
-| `.claude/skills/` | Sí | `/ticket`, `/resumen`, `/documentar`, `/bitacora`, `/decision` y `ejemplo-skill` |
+| `.claude/rules/` | Sí | Diez reglas 00-09: lenguaje y formato, anti-alucinación, documentación y entregables, seguridad, flujo y método, ramas y flujo SDD, nomenclatura agéntica, continuidad y contexto, interacción y decisiones, punteros y réplicas |
+| `.claude/skills/` | Sí | Estándar transversal: `confluence-docs`, `jira-management`, `visual-docs`; utilitarias `/ticket`, `/resumen`, `/documentar`, `/bitacora`, `/decision`; motor SDD `speckit-*` más `speckit-git-commit`; y `ejemplo-skill` |
 | `.claude/agents/` | Sí | Subagentes `revisor-codigo`, `documentador`, `arquitecto`, `revisor-proyecto` |
 | `.claude/output-styles/` | Sí | Estilos `socio-estrategico` y `redaccion-producto` |
 | `.claude/commands/` | Sí | README: formato de comandos heredado (se recomienda skills) |
 | `.claude/workflows/` | Sí | README: cómo se generan y guardan los dynamic workflows |
+| `.specify/` | Sí | Andamiaje de spec-kit v0.13.0 (templates, scripts, memoria de constitución) |
+| `specs/` | Sí | Trazas SDD por feature (`<NNN-slug>/`: spec, plan, tasks, evidencia) |
 
 ### Raíz del repo (acompañan a `.claude/`)
 
 | Ruta | ¿Git? | Qué hace |
 | --- | --- | --- |
-| `.mcp.json` | Sí | Servidores MCP del proyecto (plantilla; **debe** ir en la raíz, no dentro de `.claude/`) |
+| `.mcp.json` | Sí | Servidores MCP del proyecto: trae `atlassian` (MCP oficial, OAuth por sesión). **Debe** ir en la raíz, no dentro de `.claude/` |
 | `.worktreeinclude` | Sí | Archivos gitignored a copiar en cada worktree (**debe** ir en la raíz) |
 | `.gitignore` | Sí | Exclusiones de Claude Code (`settings.local.json`, `agent-memory-local/`, `worktrees/`, etc.) |
 
@@ -52,12 +54,23 @@ Luego:
 1. Edita `.claude/CLAUDE.md` y reemplaza los `[marcadores]`. O ejecuta `/init` para que Claude proponga un borrador a partir del código y refínalo.
 2. Ajusta los permisos de `.claude/settings.json`: `allow`/`ask` traen ejemplos seguros de git (solo lectura) a ampliar según tu stack — usa formas exactas y evita comodines que permitan encadenar comandos; el bloque `deny` (lectura de secretos) es universal y conviene mantenerlo.
 3. Edita o elimina los ejemplos: `skills/ejemplo-skill`, `agents/revisor-proyecto`, `output-styles/redaccion-producto`, `commands/README.md`, `workflows/README.md`.
-4. Completa `.mcp.json` (reemplaza los servidores de ejemplo) y `.worktreeinclude`, o bórralos si no aplican.
+4. Revisa `.mcp.json`: trae el servidor `atlassian` (MCP oficial de Atlassian, OAuth). Autorízalo con `/mcp` dentro de una sesión de Claude Code; el sitio y el `cloudId` se resuelven en runtime y nunca se escriben en el repo. Agrega otros servidores según tu stack, por ejemplo:
+
+   ```json
+   "mi-servidor-stdio": {
+     "type": "stdio",
+     "command": "npx",
+     "args": ["-y", "@paquete/mcp-server@1.0.0"],
+     "env": { "API_KEY": "${MI_API_KEY}" }
+   }
+   ```
+
+5. Configura los parámetros por proyecto de las skills de Atlassian (sección "Parámetros por proyecto" en `confluence-docs/SKILL.md` y `jira-management/SKILL.md`): espacio de Confluence, proyecto y tablero de Jira, tipo de issue gestionado, labels. En la plantilla vienen como `Pendiente de configurar`.
 
 Verifica dentro de una sesión de Claude Code:
 
 - `/memory` → confirma que `.claude/CLAUDE.md` y las `rules/` se cargan.
-- Escribe `/` → deberían aparecer `ticket`, `resumen`, `documentar`, `bitacora`, `decision` (son skills).
+- Escribe `/` → deberían aparecer `ticket`, `resumen`, `documentar`, `bitacora`, `decision`, `confluence-docs`, `jira-management`, `visual-docs` y las `speckit-*` (son skills).
 - `/agents` → `revisor-codigo`, `documentador`, `arquitecto`, `revisor-proyecto`.
 - `/config` → **Output style** → `Socio estratégico` y `Redacción de producto` seleccionables.
 
@@ -69,6 +82,19 @@ Verifica dentro de una sesión de Claude Code:
 
 La invocación `/<nombre>` proviene del nombre del directorio (`skills/ticket/` → `/ticket`).
 
+### Estándar transversal
+
+| Skill | Para qué |
+| --- | --- |
+| `/confluence-docs [modo + insumo]` | Estándar de documentación en cuatro modos: genera, audita, consulta y publica en Confluence con gate de aprobación. Trae catálogo de reglas (`rules.md`) y plantillas de entregable (`templates.md`) |
+| `/jira-management [modo + insumo]` | Gestión del tablero Jira en seis modos: redactar, crear, mover, editar, auditar y consultar, con gate por operación de escritura y trampas de JQL documentadas (`references/jql-traps.md`) |
+| `/visual-docs [tema + destino]` | Sitios HTML de revisión técnica navegables por `file://`, con sistema de diagramas y wireframes; incluye scripts y suite de tests propia |
+| `/speckit-git-commit` | Commit disciplinado de la feature SDD activa: staging acotado, bloqueo en `main`, detención ante secretos, sin push |
+
+Las skills de Atlassian usan el servidor `atlassian` de `.mcp.json` y declaran sus parámetros por proyecto como `Pendiente de configurar`.
+
+### Utilitarias
+
 | Skill | Para qué |
 | --- | --- |
 | `/ticket [descripción]` | Genera un ticket de Jira completo (título, contexto, criterios de aceptación, notas técnicas) |
@@ -76,6 +102,10 @@ La invocación `/<nombre>` proviene del nombre del directorio (`skills/ticket/` 
 | `/documentar [archivo/módulo/tema]` | Documentación técnica basada en el código real |
 | `/bitacora [qué se hizo]` | Entrada de bitácora trazable (inyecta fecha y `git status`) |
 | `/decision [decisión + contexto]` | Registro de decisión arquitectónica (ADR) |
+
+### Flujo SDD (spec-kit)
+
+El repo integra spec-kit v0.13.0 con sus skills `speckit-*`: `constitution`, `specify`, `clarify`, `plan`, `tasks`, `analyze`, `checklist`, `implement`, `converge`, `taskstoissues`. Cada feature nace con `/speckit-specify`, vive en su rama `<NNN-slug>` y queda trazada en `specs/<NNN-slug>/` (regla `05-ramas-y-flujo-sdd.md`).
 
 ## Subagentes incluidos
 

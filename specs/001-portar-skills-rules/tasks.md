@@ -75,9 +75,9 @@
 
 ## Phase 7: Polish & Cross-Cutting
 
-- [ ] T027 Actualizar `README.md`: inventario real de reglas y skills, sección de conexión Atlassian (OAuth vía `/mcp`), patrón de ejemplo MCP movido desde `.mcp.json`; verificar que los punteros entre reglas y skills resuelven (regla 02 → templates.md)
-- [ ] T028 Ejecutar quickstart completo (`specs/001-portar-skills-rules/quickstart.md` §1-§5 y §7); corregir cualquier desviación
-- [ ] T029 Commit final `docs: actualizar README e integrar configuración Atlassian` y reporte de cierre (SC-006 queda pendiente de OAuth del dueño)
+- [X] T027 Actualizar `README.md`: inventario real de reglas y skills, sección de conexión Atlassian (OAuth vía `/mcp`), patrón de ejemplo MCP movido desde `.mcp.json`; verificar que los punteros entre reglas y skills resuelven (regla 02 → templates.md)
+- [X] T028 Ejecutar quickstart completo (`specs/001-portar-skills-rules/quickstart.md` §1-§5 y §7); corregir cualquier desviación
+- [X] T029 Commit final `docs: actualizar README e integrar configuración Atlassian` y reporte de cierre (SC-006 queda pendiente de OAuth del dueño)
 
 ## Dependencies
 

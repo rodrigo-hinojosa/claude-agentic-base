@@ -123,7 +123,27 @@ Coincide con quickstart §3: el conforme en cero en toda métrica; el sembrado c
 
 ## E5 — User Story 5 (Ejemplos que enseñan solo concisión)
 
-`Pendiente de registrar` tras ejecutar T031-T036.
+**Fecha**: 15-09-2026. **Tareas**: T031-T036.
+
+**Ediciones**: `compliant-adr.md` reescrito bajo el contrato 6 — callout de envoltorio movido a la cabecera HTML, sin "Próximos pasos", Referencias sin citar `templates.md`, dueño con nombre sintético, sin la oración que anticipaba la Decisión. `structured-doc.md` reescrito bajo los contratos 5 y 6 — bloque de apertura completo (callout único, 3 viñetas, metadatos, índice, trazabilidad con nota de mantención definida), secciones 1 a 4 alineadas a `templates.md` §2, hecho SSOT una sola vez, sin meta-comentario. `seeded-violations.md`: cabecera con la lista enumerada de 10 violaciones (regla y método), ubicadas por cita en vez de número de línea para no acoplarse al tamaño de la propia cabecera; cuerpo sin cambios. `SKILL.md` §3 y §4 enlazan `prose-conforming.md` y `prose-with-seeded-flaws.md`.
+
+**Un ajuste durante la implementación**: al escribir por primera vez las ubicaciones de la lista de `seeded-violations.md` con número de línea fijo, crecer la cabecera desplazó las líneas reales del cuerpo y la cita quedó desactualizada en el mismo commit. Se corrigió citando por texto o sección en vez de número de línea; solo la salida del comando (que sí es de la implementación real) cita una línea, y se recomputa si la cabecera vuelve a cambiar de tamaño.
+
+**Comando ampliado sobre los cinco fixtures, resultado final**:
+
+| Archivo | R26 5+ | R27 | R28 | R29 guiones / párrafos | R33 |
+| --- | --- | --- | --- | --- | --- |
+| `prose-conforming.md` | 0 | 0 | 0.0 | 0.0 / 0 | 0 |
+| `prose-with-seeded-flaws.md` | 1 | 1 | 4.0 | 15.8 / 1 | 0 |
+| `structured-doc.md` | 0 | 0 | 0.0 | 0.0 / 0 | 0 |
+| `compliant-adr.md` | 0 | 0 | 0.0 | 0.0 / 0 | 0 |
+| `seeded-violations.md` | 0 | 1 | 0.0 | 0.0 / 0 | 1 |
+
+Coincide con lo que cada cabecera promete: dos conformes en cero, dos sembrados con exactamente sus desvíos declarados.
+
+**Auditorías finales persistidas**: [audit-compliant-adr.md](audit-compliant-adr.md), [audit-structured-doc.md](audit-structured-doc.md) y [audit-prose-conforming.md](audit-prose-conforming.md) (las tres `conforme`, 0 hallazgos, reemplazando o confirmando corridas previas) y [audit-seeded-violations.md](audit-seeded-violations.md) (`no-conforme`, exactamente los 10 hallazgos de la cabecera, con la regla 26 ya sin discrepancia porque no tiene piso).
+
+**Verificaciones de quickstart**: §2 FR-015 (ambos fixtures enlazados en `SKILL.md`, ≥1 cada uno); §5 (encabezados de ambos ejemplos conformes, hecho SSOT = 1, sin "Próximos pasos" ni cita a `templates.md` en el ADR); §6 "Lo que se conserva" (`git diff main` sobre las filas 27-32, 4, 13, 23, 3, 21, 6 de `rules.md`: sin salida, ninguna cambió). Barrido corporativo sobre toda la skill (`SKILL.md`, `rules.md`, `templates.md`, los cinco ejemplos): 0.
 
 ## E6 — Cierre (quickstart completo)
 

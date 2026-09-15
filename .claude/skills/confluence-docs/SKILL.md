@@ -84,7 +84,7 @@ Esta skill **no depende de ningún artefacto externo al repositorio** para produ
 5. Entrega el documento en la respuesta, listo para pegar en su destino. **Escribe a disco (Write/Edit) o publica en Confluence solo si el usuario lo pide explícitamente**; si no lo pide, propones el contenido sin materializarlo. Publicar en Confluence se hace por el modo publicar (§6), con su gate.
 6. Antes de entregar, autochequea el bloque de reglas de prioridad alta, las reglas de prosa 26 a 33, y, si aplicó la regla 25, la estructura documental (no es un auditar formal). Cuando el documento se materializa en disco, corre el comando de prosa de `rules.md` sobre el archivo final y cita sus cifras en el reporte.
 
-**Ejemplos de referencia de este modo**: [`examples/compliant-adr.md`](examples/compliant-adr.md) —un ADR conforme al estándar— y [`examples/structured-doc.md`](examples/structured-doc.md), que muestra la estructura documental de la regla 25 para documentos extensos. Ambos usan **datos sintéticos**.
+**Ejemplos de referencia de este modo**: [`examples/compliant-adr.md`](examples/compliant-adr.md) —un ADR conforme al estándar— y [`examples/structured-doc.md`](examples/structured-doc.md), que muestra la estructura documental de la regla 25 para documentos extensos. Para la densidad de prosa (reglas 26-33), el modelo es [`examples/prose-conforming.md`](examples/prose-conforming.md): cero hallazgos de prosa. Todos usan **datos sintéticos**.
 
 ## 4. Modo AUDITAR
 
@@ -115,7 +115,7 @@ Auditar es de **solo lectura**: nunca modifica la página ni el archivo. Si la p
    Ordena los hallazgos por severidad (alta primero). Si hay 0 hallazgos, omite la tabla y confirma conformidad explícitamente.
 6. **Regla dura**: si existe al menos un hallazgo de severidad alta (en particular cualquier secreto/PII), el veredicto **nunca** puede ser `conforme`.
 
-**Ejemplo de referencia de este modo**: [`examples/seeded-violations.md`](examples/seeded-violations.md), con violaciones **sembradas a propósito** para comprobar que la auditoría las detecta. Su "secreto" es sintético.
+**Ejemplos de referencia de este modo**: [`examples/seeded-violations.md`](examples/seeded-violations.md), con violaciones **sembradas a propósito** para comprobar que la auditoría las detecta (su "secreto" es sintético), y [`examples/prose-with-seeded-flaws.md`](examples/prose-with-seeded-flaws.md), con un desvío sembrado por cada regla de prosa 26 a 32.
 
 ## 5. Modo CONSULTAR
 

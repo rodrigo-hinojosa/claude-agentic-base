@@ -1,4 +1,4 @@
-Auditoría de `.claude/skills/confluence-docs/examples/seeded-violations.md`, corrida el 15-09-2026 (tarea T018, US2). No es la clave definitiva de la cabecera del fixture: esa auditoría corre en T033, después de re-clavar la regla 26 (US3) y la regla 25/7 (US4), que aún no están implementadas en este checkpoint. Aquí solo se verifica que el detector de relleno (regla 33 y regla 10 ampliada) funciona.
+Auditoría definitiva de `.claude/skills/confluence-docs/examples/seeded-violations.md`, corrida el 15-09-2026 (tarea T033, US5), con las reglas 25, 26 y 33 ya en su forma final (post US2-US4). Reemplaza la auditoría parcial de T018 (US2), que dejaba fuera el desvío de la regla 26 porque el comando y el texto de la regla estaban desincronizados en ese checkpoint.
 
 ```text
 Veredicto: no-conforme
@@ -18,4 +18,4 @@ Resumen: 10 hallazgos (alta: 9, media: 1, baja: 0)
 | 32 (Juicio) | L33, "En resumen, el módulo cumple su objetivo..." | media | Cerrar con el último dato concreto, sin sentencia de remate |
 ```
 
-**Nota sobre la regla 26**: el comando ya no publica "párrafos de 1 oración" (T012), pero el texto de la regla 26 conserva el piso "entre dos y cuatro oraciones" hasta T020 (US3). El párrafo L22 y el de "Conclusión" (L33) son de una sola oración; no se reportan aquí como hallazgo de comando, porque el instrumento que los mediría ya cambió y el criterio de la regla todavía no. Se resuelve en T024, cuando ambos coincidan.
+**Regla 26**: sin hallazgo. Sin piso (US3), un hecho que cabe en una oración no exige una segunda; los párrafos de una oración de L22 y L33 no fragmentan una idea que debiera ir junta, así que no incumplen. **Regla 7**: sin hallazgo por ausencia de viñetas; este documento no es tipo resumen ni activa la regla 25, así que no las necesita.

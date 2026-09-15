@@ -140,6 +140,6 @@ Toda definición que un artefacto anterior contradiga queda registrada aquí, co
 | Modo | Qué toma de aquí |
 | --- | --- |
 | **generar** | La plantilla del tipo solicitado, más las reglas de `rules.md` que activen |
-| **auditar** | Las secciones esperadas del tipo, para detectar faltantes o fuera de orden |
+| **auditar** | Las secciones esperadas del tipo, para detectar faltantes, fuera de orden o relleno: una sección obligatoria con prosa genérica en vez de la línea marcada es hallazgo de la regla 10 |
 | **consultar** | La sección del tipo, entera, más el subconjunto de reglas aplicables |
 | **publicar** | Nada directamente: publica contenido ya conforme |

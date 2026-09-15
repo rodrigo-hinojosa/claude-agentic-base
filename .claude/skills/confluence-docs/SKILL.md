@@ -77,11 +77,11 @@ Esta skill **no depende de ningún artefacto externo al repositorio** para produ
    - Cierra con próximos pasos, pendientes o referencias (regla 5).
    - Si el insumo referencia un dato cuya fuente única es Confluence: **enlazar, no reproducir**, y declarar qué dato puntual se consume (regla 8).
    - Toda afirmación no trivial cita su fuente (archivo:línea, comando, o URL SSOT) (regla 9).
-   - No inventes: si falta un dato, la sección lleva la línea marcada de `templates.md` ("Secciones obligatorias y vacíos") o queda como pregunta abierta. Inferir el dato solo ocurre si el usuario lo pide, y el resultado se rotula `propuesta no validada` (regla 10).
+   - No inventes: si falta un dato, la sección lleva la línea marcada de `templates.md` ("Secciones obligatorias y vacíos") o queda como pregunta abierta. Inferir el dato solo ocurre si el usuario lo pide, y el resultado se rotula `propuesta no validada`. Una afirmación genérica, válida para cualquier proyecto y sin dato propio, es relleno: se sustituye por la línea marcada (regla 10).
    - Nunca emitas secretos, credenciales ni datos personales; ejemplos siempre sintéticos (regla 16).
-   - Aplica las reglas de prosa (`rules.md` → "Reglas de prosa"): párrafo de 2 a 4 oraciones, oración de 30 palabras o menos, negrita solo para términos que el documento define, un inciso por párrafo, palabra común sobre la rebuscada, sin reformular el párrafo anterior, sin cierre sentencioso (reglas 26-32).
+   - Aplica las reglas de prosa (`rules.md` → "Reglas de prosa"): párrafo de una idea y hasta cuatro oraciones, oración de 30 palabras o menos, negrita solo para términos que el documento define, un inciso por párrafo, palabra común sobre la rebuscada, sin reformular el párrafo anterior, sin cierre sentencioso, sin muletilla de apertura ni de transición (reglas 26-33).
 5. Entrega el documento en la respuesta, listo para pegar en su destino. **Escribe a disco (Write/Edit) o publica en Confluence solo si el usuario lo pide explícitamente**; si no lo pide, propones el contenido sin materializarlo. Publicar en Confluence se hace por el modo publicar (§6), con su gate.
-6. Antes de entregar, verifica mentalmente contra el bloque de reglas de prioridad alta y, si aplicó la regla 25, contra la estructura documental (autochequeo, no un auditar formal).
+6. Antes de entregar, autochequea el bloque de reglas de prioridad alta, las reglas de prosa 26 a 33, y, si aplicó la regla 25, la estructura documental (no es un auditar formal). Cuando el documento se materializa en disco, corre el comando de prosa de `rules.md` sobre el archivo final y cita sus cifras en el reporte.
 
 **Ejemplos de referencia de este modo**: [`examples/compliant-adr.md`](examples/compliant-adr.md) —un ADR conforme al estándar— y [`examples/structured-doc.md`](examples/structured-doc.md), que muestra la estructura documental de la regla 25 para documentos extensos. Ambos usan **datos sintéticos**.
 
@@ -97,7 +97,8 @@ Auditar es de **solo lectura**: nunca modifica la página ni el archivo. Si la p
    - **Ubicación**: sección, línea o cita textual del documento.
    - **Severidad**: la prioridad de la regla (alta/media/baja); **excepción**: cualquier secreto, credencial o dato personal/financiero detectado es **siempre severidad alta** (regla 16), sin importar el contexto.
    - **Corrección sugerida**: concreta y accionable, nunca vaga ("mejorar la redacción" no es válido; "mover la conclusión al primer párrafo" sí).
-3. Si el hallazgo es de una regla de prosa con método **Juicio** (30, 31 o 32), agrega "(Juicio)" junto al número en la columna Regla. Distingue lo comprobado por comando de lo que exige lectura, para que no pesen igual.
+   - **Relleno**: una muletilla de apertura o transición (regla 33; corre el comando de prosa sobre el archivo en disco, o aplica su lista por lectura sobre texto pegado) es hallazgo de severidad alta, corrección "eliminar la frase y abrir con el dato". Una sección obligatoria con prosa genérica sin dato propio, en vez de la línea marcada, es hallazgo de severidad alta de la regla 10 ampliada, corrección "sustituir por la línea marcada `<forma>`" o "citar el dato del proyecto".
+3. Si el hallazgo es de una regla de prosa con método **Juicio** (30, 31, 32, o la 33 cuando la primera oración solo repite el encabezado sin frase de la lista), agrega "(Juicio)" junto al número en la columna Regla. Distingue lo comprobado por comando de lo que exige lectura, para que no pesen igual.
 4. No fabriques hallazgos: si una regla se cumple, no la reportes. Un documento ya conforme produce 0 hallazgos.
 5. Devuelve el reporte en este formato fijo:
 

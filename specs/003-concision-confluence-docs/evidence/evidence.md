@@ -54,7 +54,28 @@ Cifras del comando vigente (previo a la ampliación), corridas el 15-09-2026, de
 
 ## E2 — User Story 2 (Detector de relleno)
 
-`Pendiente de registrar` tras ejecutar T012-T019.
+**Fecha**: 15-09-2026. **Tareas**: T012-T019.
+
+**Ediciones**: comando de prosa de `rules.md` reemplazado por la implementación de referencia del contrato 1 (excluye bloques de código y comentarios HTML conservando líneas, sin la métrica de párrafos de una oración, con conteo y ubicación de muletillas). Fila 33 nueva en la tabla de prosa (Comando para su lista cerrada, Juicio para la repetición del encabezado); regla 10 ampliada con el criterio de Juicio del genérico sin dato. `SKILL.md` §3 con autochequeo de las reglas 26-33 y cita de cifras al materializar en disco; §4 con hallazgos de relleno tipados y la marca "(Juicio)" extendida a la 33. `templates.md` §8 con la fila de auditar reescrita.
+
+**Resultados del comando ampliado** (implementación real, extraída de `rules.md` y corrida sobre los ocho archivos):
+
+| Archivo | R26 5+ | R27 | R28 | R29 párrafos 2+ | R33 |
+| --- | --- | --- | --- | --- | --- |
+| `examples/prose-conforming.md` | 0 | 0 | 0.0 | 0 | 0 |
+| `examples/prose-with-seeded-flaws.md` | 0 | 1 | 4.7 | 1 | 0 |
+| `examples/structured-doc.md` | 0 | 3 | 0.0 | 0 | 0 |
+| `examples/compliant-adr.md` | 0 | 0 | 0.0 | 0 | 0 |
+| `examples/seeded-violations.md` | 0 | 1 | 0.0 | 0 | 1 (L18) |
+| `rules.md` | 5 | 6 | 0.0 | 1 | 0 |
+| `SKILL.md` | 3 | 9 | 0.6 | 1 | 0 |
+| `templates.md` | 0 | 1 | 0.0 | 0 | 0 |
+
+Coincide con lo esperado en quickstart §3 y §4: R33 = 1 en `seeded-violations.md` (línea real, no la de la cabecera) y 0 en los otros siete. Autodetección confirmada: los tres archivos normativos dan R33 = 0.
+
+**Auditorías persistidas**: [audit-seeded-violations.md](audit-seeded-violations.md) (`no-conforme`, 10 hallazgos, incluidos 33 alta y 10 ampliada alta) y [audit-prose-conforming.md](audit-prose-conforming.md) (`conforme`, 0 hallazgos). La de `seeded-violations.md` es parcial a propósito: no incluye el desvío de la regla 26 (piso) porque el comando ya no lo mide pero el texto de la regla aún no cambia hasta US3; se re-corre en T033 para fijar la clave definitiva de la cabecera.
+
+**Greps de quickstart §2 (FR-005, FR-007)**: fila 33 = 1, encabezado "26-33" = 1, "parrafos de 1 oracion" = 0, "no términos literales" = 0. Todos conformes.
 
 ## E3 — User Story 3 (Regla 26 sin piso)
 

@@ -18,7 +18,7 @@ Catálogo operativo de la skill `confluence-docs`. Fuente única y versionada: n
 | 4 | Apertura con propósito y alcance (1-2 frases); si es autoridad de un dato, callout "Fuente única (SSOT)" | estructura | alta |
 | 5 | Cierre con próximos pasos, pendientes o referencias, cuando corresponda; si no hay ninguno, la sección de cierre queda con la línea marcada (`templates.md`, "Secciones obligatorias y vacíos") | estructura | alta |
 | 6 | Temas con trade-offs: secuencia Contexto→Problema→Análisis→Opciones→Recomendación→Próximos pasos | estructura | alta |
-| 7 | Resumen ejecutivo o conclusión primero (3-5 viñetas orientadas a decisión); nunca enterrada | presentacion | alta |
+| 7 | Resumen ejecutivo o conclusión primero; nunca enterrada. El bloque de 3-5 viñetas es del tipo resumen y de los documentos bajo la regla 25 (tras el callout, antes de la sección 1); los demás entregables abren con la conclusión en prosa | presentacion | alta |
 | 8 | SSOT: no duplicar lo que vive en la fuente única del proyecto; enlazar + declarar el dato puntual consumido | ssot-trazabilidad | alta |
 | 9 | Cita de fuente (archivo:línea, comando ejecutado, o URL de página SSOT) en toda afirmación no trivial | ssot-trazabilidad | alta |
 | 10 | Distinguir hecho / inferencia / suposición; no inventar datos, APIs, rutas ni resultados; faltantes = línea marcada (`templates.md`, "Secciones obligatorias y vacíos") o pregunta abierta. Juicio: una afirmación válida para cualquier proyecto, sin dato propio del documentado, es relleno y se sustituye por la línea marcada | verificacion | alta |
@@ -36,7 +36,7 @@ Catálogo operativo de la skill `confluence-docs`. Fuente única y versionada: n
 | 22 | Adaptar registro y jerga a la audiencia; priorizar impacto sobre implementación para audiencias no técnicas | presentacion | media |
 | 23 | Checklists de cierre: evidencia cuantitativa por ítem (cuántos casos, método); rechazar casillas sin sustento | verificacion | media |
 | 24 | Decisión del usuario: 2-4 opciones mutuamente excluyentes con implicación y recomendación marcada; no preguntar lo que tiene default seguro | interaccion | alta |
-| 25 | Documentos extensos/multi-tema: callout de apertura como primer elemento (SSOT si es autoridad de un dato: declara alcance y delega los subtemas ajenos por enlace, sin fórmulas de prohibición) + encabezados numerados en decimal (N, N.M, N.M.x). En la pieza que abre el documento: tabla de metadatos "Campo \| Valor", índice jerárquico (en bloques nombrados solo si la agrupación es grande) y, si otros documentos la consumen, tabla de trazabilidad inversa (Página \| ID \| Qué dato consume o rol del enlace \| Tipo de enlace: Consumo o Navegación) cerrada con nota de mantención. NO aplica a ticket/bitácora/resumen/commit | estructura | alta (cuando aplica) |
+| 25 | Se activa por la naturaleza del entregable (plan, manual, spec larga, página SSOT de dominio, autoridad de datos que otros consumen) o por petición del usuario, nunca por el número de secciones: callout de apertura como único elemento de propósito y alcance (SSOT si es autoridad de un dato: declara alcance y delega los subtemas ajenos por enlace, sin fórmulas de prohibición), seguido del bloque de viñetas de la regla 7 cuando aplique, más encabezados numerados en decimal (N, N.M, N.M.x). En la pieza que abre el documento: tabla de metadatos "Campo \| Valor", índice jerárquico (en bloques nombrados solo si la agrupación es grande) y, si otros documentos la consumen, tabla de trazabilidad inversa (Página \| ID \| Qué dato consume o rol del enlace \| Tipo de enlace: Consumo o Navegación) cerrada con nota de mantención de contenido definido, u omitida si no hay filas. NO aplica a ticket/bitácora/resumen/commit | estructura | alta (cuando aplica) |
 
 ## Reglas de prosa (26-33)
 
@@ -135,17 +135,18 @@ Bloque mínimo que TODO entregable generado debe cumplir, sin excepción: reglas
 - **Regla 5** — cuándo: doc técnica, bitácora, resumen, análisis, decisión.
 - **Regla 6** — cuándo: análisis con trade-offs.
 - **Regla 11** — cuándo: al generar cualquier entregable.
-- **Regla 25** — cuándo: planes, manuales, specs largas, páginas SSOT de dominio, documentos con más de ~4 secciones de nivel superior, o autoridad de datos que otros consumirán.
+- **Regla 25** — cuándo: la naturaleza del entregable lo pide (plan, manual, spec larga, página SSOT de dominio, autoridad de datos que otros consumen) o el usuario lo solicita. Nunca por el número de secciones de la plantilla: una doc-tecnica de tema único con sus cinco secciones no lo activa.
 
   **En toda pieza extensa** (documento único, o cada página de un árbol):
-  - Callout de apertura como primer elemento del cuerpo, antes de cualquier encabezado. Si la pieza es autoridad de un dato: `> **Fuente única (SSOT)** de <tema>: <alcance>`.
+  - Callout de apertura como único elemento de propósito y alcance, antes de cualquier encabezado. Si la pieza es autoridad de un dato: `> **Fuente única (SSOT)** de <tema>: <alcance>`.
   - **Delegación, no prohibición**: el callout nombra el subtema cuya autoridad vive en otra parte y remite a ella por enlace. No se escriben fórmulas del tipo "no duplicar".
-  - Encabezados numerados en decimal (N, N.M, N.M.x), para referencia cruzada por número. En un árbol, la numeración hereda el prefijo de la pieza y no reinicia en 1 (una página 2.1 abre en 2.1.1); los anexos usan letra (A.1, A.2).
+  - Si la regla 7 aplica (tipo resumen, o cualquier documento bajo esta regla), el bloque de 3-5 viñetas va inmediatamente después del callout, sin encabezado propio y sin repetir el propósito ya declarado.
+  - Encabezados numerados en decimal (N, N.M, N.M.x), para referencia cruzada por número. En un árbol, la numeración hereda el prefijo de la pieza y no reinicia en 1 (una página 2.1 abre en 2.1.1); los anexos usan letra (A.1, A.2). La sección de propósito y alcance de la plantilla del tipo queda materializada por el callout: la numeración arranca en la sección siguiente.
 
   **En la pieza que abre el documento** (el documento único, o la raíz de un árbol):
   - Tabla de metadatos `Campo | Valor` al abrir. No se repite en las piezas internas.
   - Índice jerárquico con la numeración decimal. Agrupar en bloques nombrados (`Bloque A — ...`) solo cuando una parte reúne muchas entradas; con tres o cuatro no aporta.
-  - Si otros documentos la consumen o la enlazan: tabla de trazabilidad inversa con columnas `Página | ID | Qué dato consume o rol del enlace | Tipo de enlace`, clasificando cada fila como *Consumo* (obliga a propagar el cambio) o *Navegación* (no obliga), cerrada por una nota de mantención (agregar la fila cuando alguien empieza a consumir el dato, quitarla cuando deja de hacerlo). El disparador es ser la pieza que otros referencian, no el mero hecho de declararse SSOT. En documentos de repo, `Página | ID` se sustituye por el identificador del artefacto (ruta del archivo o módulo); las columnas obligatorias son el dato consumido y el tipo de enlace.
+  - Si otros documentos la consumen o la enlazan: tabla de trazabilidad inversa con columnas `Página | ID | Qué dato consume o rol del enlace | Tipo de enlace`, clasificando cada fila como *Consumo* (obliga a propagar el cambio) o *Navegación* (no obliga), cerrada por una nota de mantención con contenido definido (qué fila agregar y cuándo quitarla); si no hay filas que consumen el dato todavía, la tabla y su nota se omiten. El disparador es ser la pieza que otros referencian, no el mero hecho de declararse SSOT. En documentos de repo, `Página | ID` se sustituye por el identificador del artefacto (ruta del archivo o módulo); las columnas obligatorias son el dato consumido y el tipo de enlace.
 
   **Para árboles multi-página**: raíz que no reproduce contenido, solo enlaza; el contenido en las hojas, cada una fuente única de su tema.
 
@@ -182,6 +183,6 @@ Bloque mínimo que TODO entregable generado debe cumplir, sin excepción: reglas
 - **Regla 18** — cuándo: spec que toca punto no resuelto.
 
 ### presentacion
-- **Regla 7** — cuándo: cualquier entregable de más de un párrafo.
+- **Regla 7** — cuándo: el tipo resumen, o cualquier documento bajo la regla 25. Los demás tipos cumplen "conclusión primero" abriendo con la conclusión en prosa, sin bloque de viñetas obligatorio.
 - **Regla 21** — cuándo: mapeos, matrices, metadatos, checklists largos.
 - **Regla 22** — cuándo: elegir tono según destinatario.

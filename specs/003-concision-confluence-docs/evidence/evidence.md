@@ -101,7 +101,25 @@ Coincide con quickstart §3: el conforme en cero en toda métrica; el sembrado c
 
 ## E4 — User Story 4 (Estructura proporcionada)
 
-`Pendiente de registrar` tras ejecutar T025-T030.
+**Fecha**: 15-09-2026. **Tareas**: T025-T030.
+
+**Ediciones**: regla 25 de `rules.md` se activa por naturaleza declarada (plan, manual, spec larga, página SSOT de dominio, autoridad de datos que otros consumen) o petición del usuario; se retira "más de ~4 secciones" como disparador. El callout queda como única apertura de propósito y alcance; el bloque de viñetas de la regla 7 va inmediatamente después, sin encabezado propio; la nota de mantención de la trazabilidad inversa lleva contenido definido o se omite si nadie consume el dato todavía. Regla 7 acotada al tipo resumen y a documentos bajo la regla 25. `SKILL.md` §3 paso 2 espeja los mismos cambios y agrega la doc-tecnica de tema único a los tipos que no reciben la estructura. `templates.md` §2 declara que, bajo la regla 25, la sección 1 se materializa como el callout y la numeración arranca en "1. Descripción" (la corrección correspondiente ya había quedado registrada en §7 durante US1, T005).
+
+**Generaciones regeneradas y nuevas** (contrato 7): `output-doc-tecnica-small.md` regenerado con el mismo insumo de US1 — ya no lleva callout, tabla de metadatos ni índice, porque un módulo de tema único no cumple el disparador. `input-bitacora-short.md` / `output-bitacora-short.md` nuevos (hechos de una jornada, sin aprendizajes): la sección "Aprendizajes" se omite (no se marca), y no hay bloque de viñetas de apertura.
+
+**Resultados**:
+
+| Verificación | Esperado | Obtenido |
+| --- | --- | --- |
+| Doc-tecnica sin callout/metadatos/índice | 0 líneas | 0 |
+| Bitácora sin bloque de viñetas de apertura | 0 | 0 (única lista es "Pendientes", que es contenido, no resumen ejecutivo) |
+| Grep genérico sobre ambas salidas | 0 y 0 | 0 y 0 |
+| R33 (comando ampliado) sobre ambas salidas | 0 y 0 | 0 y 0 |
+| `'~4 secciones'` en `SKILL.md` y `rules.md` | 0 y 0 | 0 y 0 |
+| Regla 7 con "regla 25" | 1 | 1 |
+| Barrido corporativo sobre archivos tocados y evidencia nueva | 0 | 0 |
+
+**Nota de continuidad**: la doc-tecnica pequeña se generó dos veces en la feature (T010 con la estructura de la regla 25 vigente entonces, T029 sin ella). Ambas versiones quedan en el historial de commits; solo la de T029 permanece en `output-doc-tecnica-small.md`.
 
 ## E5 — User Story 5 (Ejemplos que enseñan solo concisión)
 

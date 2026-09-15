@@ -65,6 +65,8 @@ Todas las secciones son obligatorias: presentes, no llenas (ver "Secciones oblig
 
 **Qué la distingue**: describe algo que existe y que otros van a usar. Si lo que se documenta es una decisión y no una cosa, el tipo es `adr`.
 
+**Bajo la regla 25** (cuando el entregable lo activa por naturaleza o petición, ver `rules.md` regla 25): la sección 1 "Propósito y alcance" se materializa como el callout de apertura, y la numeración decimal de las secciones siguientes arranca en "1. Descripción".
+
 ---
 
 ## 3. Registro de decisión (`adr`)

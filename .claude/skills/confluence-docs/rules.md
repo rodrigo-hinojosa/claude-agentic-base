@@ -16,13 +16,13 @@ Catálogo operativo de la skill `confluence-docs`. Fuente única y versionada: n
 | 2 | Cero emojis, siempre | lenguaje-formato | alta |
 | 3 | Markdown escaneable: encabezados, listas, tablas, bloques de código con lenguaje declarado; nunca muros de texto | lenguaje-formato | alta |
 | 4 | Apertura con propósito y alcance (1-2 frases); si es autoridad de un dato, callout "Fuente única (SSOT)" | estructura | alta |
-| 5 | Cierre con próximos pasos, pendientes o referencias | estructura | alta |
+| 5 | Cierre con próximos pasos, pendientes o referencias, cuando corresponda; si no hay ninguno, la sección de cierre queda con la línea marcada (`templates.md`, "Secciones obligatorias y vacíos") | estructura | alta |
 | 6 | Temas con trade-offs: secuencia Contexto→Problema→Análisis→Opciones→Recomendación→Próximos pasos | estructura | alta |
 | 7 | Resumen ejecutivo o conclusión primero (3-5 viñetas orientadas a decisión); nunca enterrada | presentacion | alta |
 | 8 | SSOT: no duplicar lo que vive en la fuente única del proyecto; enlazar + declarar el dato puntual consumido | ssot-trazabilidad | alta |
 | 9 | Cita de fuente (archivo:línea, comando ejecutado, o URL de página SSOT) en toda afirmación no trivial | ssot-trazabilidad | alta |
 | 10 | Distinguir hecho / inferencia / suposición; no inventar datos, APIs, rutas ni resultados; faltantes = pregunta abierta | verificacion | alta |
-| 11 | Plantilla fija por tipo de entregable; secciones obligatorias presentes, opcionales marcadas "omite si no aplica" | estructura | alta |
+| 11 | Plantilla fija por tipo de entregable; secciones obligatorias presentes, con línea marcada si no hay dato real (`templates.md`, "Secciones obligatorias y vacíos"); opcionales marcadas "omite si no aplica" | estructura | alta |
 | 12 | Descripción de trabajo **fuera de Jira** (specs, actas, doc de tareas): título accionable, alcance y criterios de "hecho" verificables. Los tickets del tablero del proyecto NO se rigen por esta regla: son autoridad de la skill `jira-management`, con su propio estándar | tickets | alta |
 | 13 | ADR: Contexto, Decisión, Alternativas reales, Consecuencias con contras, Estado (default Propuesta), dueño, fecha, ADR-NNN | adr-decisiones | alta |
 | 14 | Commits: `tipo: descripción` en español imperativo, sin atribución ni emojis; si el proyecto usa Jira: issues `[<CLAVE>-XXX]`, ramas `tipo/<CLAVE>-XXX-desc` | commits-git | alta |

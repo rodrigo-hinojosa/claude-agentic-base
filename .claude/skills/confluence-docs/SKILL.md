@@ -77,7 +77,7 @@ Esta skill **no depende de ningún artefacto externo al repositorio** para produ
    - Cierra con próximos pasos, pendientes o referencias (regla 5).
    - Si el insumo referencia un dato cuya fuente única es Confluence: **enlazar, no reproducir**, y declarar qué dato puntual se consume (regla 8).
    - Toda afirmación no trivial cita su fuente (archivo:línea, comando, o URL SSOT) (regla 9).
-   - No inventes: si falta un dato, decláralo como pregunta abierta o supuesto explícito, nunca lo rellenes (regla 10).
+   - No inventes: si falta un dato, la sección lleva la línea marcada de `templates.md` ("Secciones obligatorias y vacíos") o queda como pregunta abierta. Inferir el dato solo ocurre si el usuario lo pide, y el resultado se rotula `propuesta no validada` (regla 10).
    - Nunca emitas secretos, credenciales ni datos personales; ejemplos siempre sintéticos (regla 16).
    - Aplica las reglas de prosa (`rules.md` → "Reglas de prosa"): párrafo de 2 a 4 oraciones, oración de 30 palabras o menos, negrita solo para términos que el documento define, un inciso por párrafo, palabra común sobre la rebuscada, sin reformular el párrafo anterior, sin cierre sentencioso (reglas 26-32).
 5. Entrega el documento en la respuesta, listo para pegar en su destino. **Escribe a disco (Write/Edit) o publica en Confluence solo si el usuario lo pide explícitamente**; si no lo pide, propones el contenido sin materializarlo. Publicar en Confluence se hace por el modo publicar (§6), con su gate.

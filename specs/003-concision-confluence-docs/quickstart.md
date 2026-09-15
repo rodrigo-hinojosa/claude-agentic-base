@@ -110,7 +110,7 @@ Invocar `confluence-docs` en modo generar con cada insumo de `$EV/input-*.md`, p
 
 ```bash
 grep -ciE 'buenas prácticas|se recomienda|se asume|es importante' "$EV"/output-*.md
-grep -cE '^(Sin información registrada|Pendiente: |Sin pendientes)' "$EV/output-doc-tecnica-small.md" "$EV/output-adr-no-cons.md"
+grep -cE '(Sin información registrada|Pendiente: |Sin pendientes)' "$EV/output-doc-tecnica-small.md" "$EV/output-adr-no-cons.md"
 grep -c '^> \|^| Campo \|^## Índice\|^- §' "$EV/output-doc-tecnica-small.md"
 grep -c '^- ' "$EV/output-bitacora-short.md"
 ```

@@ -44,7 +44,7 @@ Gobiernan cómo se escribe, no qué secciones lleva un entregable ni en qué idi
 
 | # | Regla | Categoría | Prioridad | Método |
 |---|-------|-----------|-----------|--------|
-| 26 | Un párrafo tiene entre dos y cuatro oraciones. El de una sola se reserva para una definición o un veredicto | prosa | alta | Comando |
+| 26 | Un párrafo sostiene una idea y no pasa de cuatro oraciones. Una idea no se fragmenta en párrafos de una oración | prosa | alta | Comando |
 | 27 | Una oración no pasa de 30 palabras. Si pasa, se parte en dos | prosa | alta | Comando |
 | 28 | La negrita marca un término que el documento define. No cubre una oración | prosa | alta | Comando |
 | 29 | La aclaración que importa va en oración propia. El inciso con guion largo se reserva para el apunte breve, y nunca hay dos en un párrafo | prosa | media | Comando |
@@ -57,7 +57,7 @@ Las reglas 26 a 29 no llevan umbral de aprobación: publican su cifra y se compa
 
 Las reglas 30 a 32 no tienen comando. Una regla sin comando publicado queda en método Juicio, cualquiera sea la intención de quien la escribe. Sus hallazgos van marcados como Juicio en la auditoría, para no pesar igual que los comprobados por comando. La 33 es Comando para su lista cerrada; la parte de "sin repetir el encabezado" queda marcada como Juicio, igual que 30-32.
 
-**Tres excepciones que solo la lectura resuelve.** La regla 26 exime al párrafo de una oración cuando es una definición o un veredicto. La 28 exime a la negrita larga cuando cubre un término que el propio documento define. La 33 exime la frase de la lista que introduce un bloque de código o una tabla: es transición legítima, no relleno. El comando produce la cifra; la excepción se aplica al juzgar cada hallazgo, no al contarlo.
+**Dos excepciones que solo la lectura resuelve.** La 28 exime a la negrita larga cuando cubre un término que el propio documento define. La 33 exime la frase de la lista que introduce un bloque de código o una tabla: es transición legítima, no relleno. El comando produce la cifra; la excepción se aplica al juzgar cada hallazgo, no al contarlo.
 
 **Criterio de las reglas de Juicio:**
 - **30 — palabra común**: al leer, marcar todo término de registro alto que tenga un equivalente llano en español de Chile (`obliga` → exige; `gobierna` → manda, define; `delata` → muestra, avisa; `caducidad` → queda viejo; `sostiene` → respalda; `remite` → apunta a). No se cazan con un comando. El efecto viene de muchas palabras raras usadas dos o tres veces, no de una repetida.

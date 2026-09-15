@@ -79,7 +79,25 @@ Coincide con lo esperado en quickstart §3 y §4: R33 = 1 en `seeded-violations.
 
 ## E3 — User Story 3 (Regla 26 sin piso)
 
-`Pendiente de registrar` tras ejecutar T020-T024.
+**Fecha**: 15-09-2026. **Tareas**: T020-T024.
+
+**Ediciones**: regla 26 de `rules.md` sin piso ("un párrafo sostiene una idea y no pasa de cuatro oraciones; una idea no se fragmenta en párrafos de una oración"); se quita la excepción de la 26 en el bloque de excepciones (quedan la 28 y la 33). `SKILL.md` L82 ya decía "párrafo de una idea y hasta cuatro oraciones" desde T015 (US2), adelantado porque ambas ediciones caían en la misma línea.
+
+**Re-clavado de fixtures**:
+
+- `prose-with-seeded-flaws.md`: se fundió "El cache se limpia los domingos." en el párrafo de Contexto (ya no es un párrafo de una oración aislado). El desvío R26 nuevo se sembró en el párrafo del pipeline de Alcance: 5 oraciones, cada una con un dato distinto (fuentes, reintento, formato de salida, notificación, alerta), sin reformular entre sí, conservando la oración original de más de 30 palabras como primera oración (desvío R27, misma ubicación). Se quitó la autodescripción del cuerpo.
+- `prose-conforming.md`: se quitó la autodescripción del cuerpo. Sin otros cambios de contenido.
+
+**Comando ampliado sobre ambos, resultado final**:
+
+| Archivo | R26 5+ | R27 | R28 | R29 guiones / párrafos | R33 |
+| --- | --- | --- | --- | --- | --- |
+| `prose-conforming.md` | 0 de 5 | 0 de 11 | 0.0 | 0.0 / 0 | 0 |
+| `prose-with-seeded-flaws.md` | 1 de 7 | 1 de 14 | 4.0 | 15.8 / 1 | 0 |
+
+Coincide con quickstart §3: el conforme en cero en toda métrica; el sembrado con exactamente un disparo por regla de comando (26, 27, 28, 29). Las cabeceras citan esta misma salida con fecha 15-09-2026. Los desvíos de Juicio (30, 31, 32) no cambiaron de ubicación y no requieren comando.
+
+**Grep FR-010**: `'entre dos y cuatro'` en `rules.md` = 0. **Barrido corporativo** sobre ambos archivos: 0.
 
 ## E4 — User Story 4 (Estructura proporcionada)
 

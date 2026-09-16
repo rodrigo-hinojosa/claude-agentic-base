@@ -1,15 +1,20 @@
 <!--
 Caso de prueba de las reglas de prosa (SKILL.md §3 y §4, rules.md → "Reglas de prosa").
-Mismo tema que prose-with-seeded-flaws.md, escrito conforme a las siete reglas.
+Mismo tema que prose-with-seeded-flaws.md, escrito conforme a las ocho reglas.
 Una auditoria contra este archivo debe devolver cero hallazgos de prosa.
 
 Es un fixture, no una transcripcion: no tiene cifras de un dia que caduquen.
-Contrastado contra rules.md el 06-09-2026.
+Contrastado contra rules.md el 15-09-2026 (feature 003-concision-confluence-docs).
+Salida del comando ampliado sobre este archivo, misma fecha:
+  R26 parrafos de 5 o mas    : 0 de 5 = 0%
+  R27 oraciones de 30+ pal   : 0 de 11 = 0%
+  R28 negrita larga /1000 pal: 0.0
+  R29 guiones inciso /1000   : 0.0
+  R29 parrafos con 2+ incisos: 0
+  R33 muletillas (lista)     : 0
 -->
 
 # Notas sobre el módulo de reportes semanales
-
-Documento de referencia para el modo `auditar` de `confluence-docs`. Ejemplo con datos sintéticos.
 
 ## Contexto
 

@@ -16,7 +16,25 @@ Son **dos capas, no dos copias**: este archivo dice qué secciones lleva un ADR;
 
 ## Procedencia
 
-Réplica declarada del estándar consolidado en un workspace anterior, portada y depurada el 06-09-2026 (feature `001-portar-skills-rules`). Las plantillas viven en el repositorio para que la skill opere en cualquier clon, sin depender de artefactos externos.
+Réplica declarada del estándar consolidado en un workspace anterior, portada y depurada el 06-09-2026 (feature `001-portar-skills-rules`). Las plantillas viven en el repositorio para que la skill opere en cualquier clon, sin depender de artefactos externos. Revisado el 15-09-2026 (feature `003-concision-confluence-docs`): sección "Secciones obligatorias y vacíos" nueva; §2, §3, §7 y §8 editados.
+
+---
+
+## Secciones obligatorias y vacíos
+
+**Obligatoria significa presente, no llena.** Cuando una sección obligatoria no tiene dato real del proyecto, queda con una sola línea marcada. Nunca con prosa que rellene el hueco.
+
+El generador emite una de tres formas canónicas:
+
+- `Sin información registrada`: no hay dato.
+- `Pendiente: <qué falta>`: el dato existe y no está en la fuente.
+- `Sin pendientes`: solo en el cierre, cuando no queda nada abierto.
+
+El auditor acepta además las marcas de `.claude/rules/01-prevencion-alucinaciones.md`: `Pendiente` y `Por completar`, con o sin detalle tras dos puntos o "de" (por ejemplo `Pendiente de configurar`).
+
+Invariantes: la línea marcada ocupa un renglón y es el único contenido de la sección. Una sección con línea marcada más prosa se audita como prosa. Si el usuario pide inferir el dato que falta, el resultado se rotula `propuesta no validada` y no sustituye a la línea marcada.
+
+Qué no hace la línea marcada: no convierte un no-ADR en ADR (§3, "si no hubo alternativas reales, no es un ADR"). En bitácora y resumen, una sección omitible sin contenido se omite; no lleva línea marcada.
 
 ---
 
@@ -35,23 +53,25 @@ Réplica declarada del estándar consolidado en un workspace anterior, portada y
 
 ## 2. Documentación técnica (`doc-tecnica`)
 
-Todas las secciones son obligatorias.
+Todas las secciones son obligatorias: presentes, no llenas (ver "Secciones obligatorias y vacíos").
 
 | # | Sección | Qué contiene |
 | --- | --- | --- |
 | 1 | **Propósito y alcance** | Para qué existe el documento y qué cubre, en una o dos frases. Si el documento es autoridad de un dato, aquí va el callout SSOT declarando de qué |
 | 2 | **Descripción** | Qué es la cosa documentada y cómo funciona. El cuerpo del documento |
 | 3 | **Uso y ejemplos** | Cómo se usa en la práctica, con casos concretos y bloques ejecutables cuando aplique |
-| 4 | **Decisiones y supuestos** | El porqué, no solo el qué: qué se decidió, qué se descartó, qué se está suponiendo |
+| 4 | **Decisiones y supuestos** | El porqué, no solo el qué: qué se decidió, qué se descartó, y los supuestos que trae la fuente del insumo. Un supuesto que introduciría el redactor no entra aquí: se declara aparte como `propuesta no validada` |
 | 5 | **Referencias y pendientes** | Enlaces a las fuentes, y lo que queda abierto |
 
 **Qué la distingue**: describe algo que existe y que otros van a usar. Si lo que se documenta es una decisión y no una cosa, el tipo es `adr`.
+
+**Bajo la regla 25** (cuando el entregable lo activa por naturaleza o petición, ver `rules.md` regla 25): la sección 1 "Propósito y alcance" se materializa como el callout de apertura, y la numeración decimal de las secciones siguientes arranca en "1. Descripción".
 
 ---
 
 ## 3. Registro de decisión (`adr`)
 
-Todas las secciones son obligatorias.
+Todas las secciones son obligatorias: presentes, no llenas (ver "Secciones obligatorias y vacíos").
 
 | # | Sección | Qué contiene |
 | --- | --- | --- |
@@ -110,7 +130,10 @@ Este archivo **no define** su formato. Se listan para que quien busque no conclu
 
 Toda definición que un artefacto anterior contradiga queda registrada aquí, con su versión previa y su motivo de superación. **No se borra lo superado**: sin ese registro, quien vuelva al archivo no puede saber si un dato cambió o si siempre fue así. Este archivo arranca su historial propio en este repositorio; el historial del workspace de origen no se portó.
 
-Sin correcciones registradas a la fecha.
+| Fecha | Definición previa | Definición vigente | Motivo |
+| --- | --- | --- | --- |
+| 15-09-2026 | "Obligatoria" se leía como "llena": una sección sin dato del proyecto se completaba con prosa genérica o supuestos del redactor | "Obligatoria" significa presente, no llena; el vacío real lleva la línea marcada (ver "Secciones obligatorias y vacíos") | Esa lectura era la causa más frecuente de relleno (feature `003-concision-confluence-docs`) |
+| 15-09-2026 | Bajo la regla 25, la sección "Propósito y alcance" de §2 llevaba su propio encabezado, después del callout de apertura | Esa sección se materializa como el callout; la numeración decimal arranca en "1. Descripción" (ver §2, nota bajo la regla 25) | El callout y un encabezado "Propósito y alcance" duplicaban la misma apertura |
 
 ---
 
@@ -119,6 +142,6 @@ Sin correcciones registradas a la fecha.
 | Modo | Qué toma de aquí |
 | --- | --- |
 | **generar** | La plantilla del tipo solicitado, más las reglas de `rules.md` que activen |
-| **auditar** | Las secciones esperadas del tipo, para detectar faltantes o fuera de orden |
+| **auditar** | Las secciones esperadas del tipo, para detectar faltantes, fuera de orden o relleno: una sección obligatoria con prosa genérica en vez de la línea marcada es hallazgo de la regla 10 |
 | **consultar** | La sección del tipo, entera, más el subconjunto de reglas aplicables |
 | **publicar** | Nada directamente: publica contenido ya conforme |

@@ -53,21 +53,22 @@ Esta skill **no depende de ningún artefacto externo al repositorio** para produ
 ## 3. Modo GENERAR
 
 1. Selecciona el tipo (tabla §2) y **lee su plantilla en [`templates.md`](templates.md)**: secciones, orden y cuáles son omitibles.
-2. **Evalúa la extensión y estructura (regla 25)**: si el entregable es un documento extenso o multi-tema (plan, manual, spec larga, página SSOT de dominio, más de ~4 secciones de nivel superior, o autoridad de datos que otros consumirán), aplica la estructura documental al redactar.
+2. **Evalúa si aplica la estructura documental (regla 25)**: se activa por la naturaleza del entregable (plan, manual, spec larga, página SSOT de dominio, autoridad de datos que otros consumirán) o porque el usuario la pide. Nunca por el número de secciones de la plantilla: una doc-tecnica de tema único con sus cinco secciones no la activa.
 
    Siempre, en toda pieza extensa:
-   - Callout de apertura como primer elemento, antes de cualquier encabezado. Si es autoridad de un dato: `> **Fuente única (SSOT)** de <tema>: <alcance>`.
+   - Callout de apertura como único elemento de propósito y alcance, antes de cualquier encabezado. Si es autoridad de un dato: `> **Fuente única (SSOT)** de <tema>: <alcance>`.
    - **Delega, no prohíbas**: nombra el subtema cuya autoridad vive en otra parte y remite a ella por enlace. No escribas fórmulas del tipo "no duplicar".
-   - Encabezados numerados en decimal (N, N.M, N.M.x), para referencia cruzada por número. Si la pieza es parte de un árbol, la numeración hereda su prefijo y no reinicia en 1.
+   - Si la regla 7 aplica (tipo resumen, o el documento entra aquí por naturaleza o petición), el bloque de 3-5 viñetas va inmediatamente después del callout, sin encabezado propio y sin repetir el propósito ya declarado.
+   - Encabezados numerados en decimal (N, N.M, N.M.x), para referencia cruzada por número. Si la pieza es parte de un árbol, la numeración hereda su prefijo y no reinicia en 1. La sección "Propósito y alcance" de la plantilla del tipo queda materializada por el callout: la numeración arranca en la sección siguiente (por ejemplo, "1. Descripción" en `doc-tecnica`).
 
    Solo en la pieza que abre el documento (el documento único, o la raíz de un árbol):
    - Tabla de metadatos "Campo | Valor" al abrir. No la repitas en las piezas internas.
    - Índice jerárquico con esa numeración. Agrupa en bloques nombrados solo si una parte reúne muchas entradas; con tres o cuatro, no aporta.
-   - Si otros documentos la consumen o la enlazan, tabla de trazabilidad inversa: `Página | ID | Qué dato consume o rol del enlace | Tipo de enlace` (*Consumo* obliga a propagar el cambio, *Navegación* no), cerrada con una nota de mantención. En documentos de repo, `Página | ID` se sustituye por la ruta del artefacto. El disparador es que otros la referencien, no que se declare SSOT.
+   - Si otros documentos la consumen o la enlazan, tabla de trazabilidad inversa: `Página | ID | Qué dato consume o rol del enlace | Tipo de enlace` (*Consumo* obliga a propagar el cambio, *Navegación* no), cerrada con una nota de mantención con contenido definido (qué fila agregar y cuándo quitarla); si nadie la consume todavía, la tabla y su nota se omiten. En documentos de repo, `Página | ID` se sustituye por la ruta del artefacto. El disparador es que otros la referencien, no que se declare SSOT.
 
    Para documentos multi-página: raíz que solo enlaza + contenido en las hijas por tema.
 
-   No exijas rutas de lectura por intención ni leyenda de marcadores de certeza: son opcionales, a criterio del autor. **No** apliques esta estructura a tipos cortos de tema único (bitácora, resumen, commit).
+   No exijas rutas de lectura por intención ni leyenda de marcadores de certeza: son opcionales, a criterio del autor. **No** apliques esta estructura a tipos cortos de tema único (bitácora, resumen, commit) ni a una doc-tecnica de un módulo o tema único que no cumpla el disparador de arriba.
 3. Redacta el contenido con la plantilla del tipo, aplicando el bloque de reglas de prioridad alta (ver `rules.md` → "Reglas de prioridad alta — resumen") sin excepción, más las reglas `media`/condicionales que activen (tablas si hay datos estructurados, adaptar a audiencia si el destino no es técnico, etc.).
 4. Reglas no negociables al redactar:
    - Prosa en español (Chile); código/identificadores/comandos en inglés (regla 1).
@@ -77,13 +78,13 @@ Esta skill **no depende de ningún artefacto externo al repositorio** para produ
    - Cierra con próximos pasos, pendientes o referencias (regla 5).
    - Si el insumo referencia un dato cuya fuente única es Confluence: **enlazar, no reproducir**, y declarar qué dato puntual se consume (regla 8).
    - Toda afirmación no trivial cita su fuente (archivo:línea, comando, o URL SSOT) (regla 9).
-   - No inventes: si falta un dato, decláralo como pregunta abierta o supuesto explícito, nunca lo rellenes (regla 10).
+   - No inventes: si falta un dato, la sección lleva la línea marcada de `templates.md` ("Secciones obligatorias y vacíos") o queda como pregunta abierta. Inferir el dato solo ocurre si el usuario lo pide, y el resultado se rotula `propuesta no validada`. Una afirmación genérica, válida para cualquier proyecto y sin dato propio, es relleno: se sustituye por la línea marcada (regla 10).
    - Nunca emitas secretos, credenciales ni datos personales; ejemplos siempre sintéticos (regla 16).
-   - Aplica las reglas de prosa (`rules.md` → "Reglas de prosa"): párrafo de 2 a 4 oraciones, oración de 30 palabras o menos, negrita solo para términos que el documento define, un inciso por párrafo, palabra común sobre la rebuscada, sin reformular el párrafo anterior, sin cierre sentencioso (reglas 26-32).
+   - Aplica las reglas de prosa (`rules.md` → "Reglas de prosa"): párrafo de una idea y hasta cuatro oraciones, oración de 30 palabras o menos, negrita solo para términos que el documento define, un inciso por párrafo, palabra común sobre la rebuscada, sin reformular el párrafo anterior, sin cierre sentencioso, sin muletilla de apertura ni de transición (reglas 26-33).
 5. Entrega el documento en la respuesta, listo para pegar en su destino. **Escribe a disco (Write/Edit) o publica en Confluence solo si el usuario lo pide explícitamente**; si no lo pide, propones el contenido sin materializarlo. Publicar en Confluence se hace por el modo publicar (§6), con su gate.
-6. Antes de entregar, verifica mentalmente contra el bloque de reglas de prioridad alta y, si aplicó la regla 25, contra la estructura documental (autochequeo, no un auditar formal).
+6. Antes de entregar, autochequea el bloque de reglas de prioridad alta, las reglas de prosa 26 a 33, y, si aplicó la regla 25, la estructura documental (no es un auditar formal). Cuando el documento se materializa en disco, corre el comando de prosa de `rules.md` sobre el archivo final y cita sus cifras en el reporte.
 
-**Ejemplos de referencia de este modo**: [`examples/compliant-adr.md`](examples/compliant-adr.md) —un ADR conforme al estándar— y [`examples/structured-doc.md`](examples/structured-doc.md), que muestra la estructura documental de la regla 25 para documentos extensos. Ambos usan **datos sintéticos**.
+**Ejemplos de referencia de este modo**: [`examples/compliant-adr.md`](examples/compliant-adr.md) —un ADR conforme al estándar— y [`examples/structured-doc.md`](examples/structured-doc.md), que muestra la estructura documental de la regla 25 para documentos extensos. Para la densidad de prosa (reglas 26-33), el modelo es [`examples/prose-conforming.md`](examples/prose-conforming.md): cero hallazgos de prosa. Todos usan **datos sintéticos**.
 
 ## 4. Modo AUDITAR
 
@@ -97,7 +98,8 @@ Auditar es de **solo lectura**: nunca modifica la página ni el archivo. Si la p
    - **Ubicación**: sección, línea o cita textual del documento.
    - **Severidad**: la prioridad de la regla (alta/media/baja); **excepción**: cualquier secreto, credencial o dato personal/financiero detectado es **siempre severidad alta** (regla 16), sin importar el contexto.
    - **Corrección sugerida**: concreta y accionable, nunca vaga ("mejorar la redacción" no es válido; "mover la conclusión al primer párrafo" sí).
-3. Si el hallazgo es de una regla de prosa con método **Juicio** (30, 31 o 32), agrega "(Juicio)" junto al número en la columna Regla. Distingue lo comprobado por comando de lo que exige lectura, para que no pesen igual.
+   - **Relleno**: una muletilla de apertura o transición (regla 33; corre el comando de prosa sobre el archivo en disco, o aplica su lista por lectura sobre texto pegado) es hallazgo de severidad alta, corrección "eliminar la frase y abrir con el dato". Una sección obligatoria con prosa genérica sin dato propio, en vez de la línea marcada, es hallazgo de severidad alta de la regla 10 ampliada, corrección "sustituir por la línea marcada `<forma>`" o "citar el dato del proyecto".
+3. Si el hallazgo es de una regla de prosa con método **Juicio** (30, 31, 32, o la 33 cuando la primera oración solo repite el encabezado sin frase de la lista), agrega "(Juicio)" junto al número en la columna Regla. Distingue lo comprobado por comando de lo que exige lectura, para que no pesen igual.
 4. No fabriques hallazgos: si una regla se cumple, no la reportes. Un documento ya conforme produce 0 hallazgos.
 5. Devuelve el reporte en este formato fijo:
 
@@ -113,7 +115,7 @@ Auditar es de **solo lectura**: nunca modifica la página ni el archivo. Si la p
    Ordena los hallazgos por severidad (alta primero). Si hay 0 hallazgos, omite la tabla y confirma conformidad explícitamente.
 6. **Regla dura**: si existe al menos un hallazgo de severidad alta (en particular cualquier secreto/PII), el veredicto **nunca** puede ser `conforme`.
 
-**Ejemplo de referencia de este modo**: [`examples/seeded-violations.md`](examples/seeded-violations.md), con violaciones **sembradas a propósito** para comprobar que la auditoría las detecta. Su "secreto" es sintético.
+**Ejemplos de referencia de este modo**: [`examples/seeded-violations.md`](examples/seeded-violations.md), con violaciones **sembradas a propósito** para comprobar que la auditoría las detecta (su "secreto" es sintético), y [`examples/prose-with-seeded-flaws.md`](examples/prose-with-seeded-flaws.md), con un desvío sembrado por cada regla de prosa 26 a 32.
 
 ## 5. Modo CONSULTAR
 

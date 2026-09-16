@@ -147,4 +147,25 @@ Coincide con lo que cada cabecera promete: dos conformes en cero, dos sembrados 
 
 ## E6 — Cierre (quickstart completo)
 
-`Pendiente de registrar` tras ejecutar T037-T039.
+**Fecha**: 15-09-2026. **Tareas**: T037-T039.
+
+**Procedencia declarada** (D16, regla 09): `rules.md` L3 y `templates.md` §Procedencia citan la revisión del 15-09-2026 (feature 003) con las reglas y secciones que cambiaron.
+
+**Quickstart completo (§1 a §10), corrida final**:
+
+| Bloque | Resultado |
+| --- | --- |
+| §1 Barrido corporativo | 0 en ambos patrones |
+| §2 Greps de texto | Los 14 conformes |
+| §3 Comando sobre los 8 archivos | Los tres normativos en R33 = 0; los cinco fixtures igual a su cabecera |
+| §4 Autodetección | R33 = 0 en `rules.md`, `SKILL.md`, `templates.md` |
+| §5 Encabezados de ejemplos | Ambos coinciden con su plantilla; SSOT = 1; sin "Próximos pasos" ni cita a `templates.md` en el ADR |
+| §6 Lo que se conserva | `git diff main` sin cambios en las filas 27-32, 4, 13, 23, 3, 21, 6; frases ancla presentes (corregido un grep case-sensitive propio que daba falso negativo en "se omite si no") |
+| §7 Auditorías persistidas | Las cuatro con el veredicto y los hallazgos esperados |
+| §8 Generaciones persistidas | Las tres con línea marcada, sin genérico, sin R33 |
+| §9 Punteros | Sin enlaces rotos; detector de dependencias externas sin salida |
+| §10 Cierre | `evidence.md` completo (esta entrada); rama limpia salvo este cierre |
+
+**Un hallazgo de proceso, sin impacto en el resultado**: el grep de "Lo que se conserva" para `se omite si no` no llevaba `-i` y no encontraba las tres ocurrencias reales (con mayúscula inicial de oración). Es un defecto del comando de verificación, no del contenido — `templates.md` conserva las tres frases intactas. Corregido en `quickstart.md` §6.
+
+**Resumen de la feature**: 39 tareas completadas en 6 commits (`8dc8ec7` diseño, `52516bd` US1, `706c112` US2, `9d55f1a` US3, `4cc47b5` US4, `f66610a` US5, más este cierre). Las cinco historias de la spec están implementadas y verificadas con la skill real, no con aproximaciones. Pendiente fuera de esta feature: recomputar la línea base de prosa (`Pendiente de recomputar`, se hace después de integrar); protección técnica de `main` en GitHub.

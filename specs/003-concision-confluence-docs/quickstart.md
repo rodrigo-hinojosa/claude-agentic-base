@@ -90,7 +90,7 @@ grep -n 'templates.md' "$SKILL/examples/compliant-adr.md"
 git diff main -- "$SKILL/rules.md" | grep -E '^[-+]\| (27|28|29|30|31|32|4|13|23|3|21|6) '
 git diff main --stat -- "$SKILL/SKILL.md" | tail -1
 grep -c 'Un umbral se cumple moviendo texto' "$SKILL/rules.md"
-grep -c 'se omite si no' "$SKILL/templates.md"
+grep -ci 'se omite si no' "$SKILL/templates.md"
 ```
 
 **Esperado**: el primer comando no devuelve líneas (esas filas no cambian); el segundo muestra un cambio acotado (decenas de líneas, no cientos); los dos últimos devuelven al menos 1 y al menos 3 respectivamente (bitácora, resumen, referencias de ADR).

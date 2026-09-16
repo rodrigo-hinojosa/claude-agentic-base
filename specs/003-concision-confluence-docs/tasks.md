@@ -116,9 +116,9 @@
 
 ## Phase 8: Polish y cierre
 
-- [ ] T037 Declarar la revisión 003 en la nota de procedencia de `.claude/skills/confluence-docs/rules.md` (L3: fecha ISO y reglas cambiadas 5, 7, 10, 11, 25, 26, más la 33 agregada y el comando ampliado) y en la sección "Procedencia" de `.claude/skills/confluence-docs/templates.md` (fecha y secciones cambiadas: sección sin número nueva, §2, §3, §7, §8), según D16 y la regla 09
-- [ ] T038 Ejecutar completo `specs/003-concision-confluence-docs/quickstart.md` (§1 a §10) sobre el estado final de `.claude/skills/confluence-docs/`: barrido corporativo, greps, comando sobre fixtures y archivos normativos (autodetección), encabezados, "Lo que se conserva" (`git diff main` sin cambios en las filas 27-32, 4, 13, 23, 3, 21 y 6), auditorías y generaciones persistidas, punteros; corregir toda desviación sin declarar cubierto lo que quede fuera de alcance
-- [ ] T039 Completar `specs/003-concision-confluence-docs/evidence/evidence.md` con E6 (corrida completa del quickstart, fecha y resultado por bloque), actualizar la memoria de continuidad del proyecto con el estado del feature 003, commitear con mensaje `docs: evidencia de validación del feature 003`, y reportar el cierre al dueño dejando push, PR y merge a su confirmación explícita (SC-008)
+- [X] T037 Declarar la revisión 003 en la nota de procedencia de `.claude/skills/confluence-docs/rules.md` (L3: fecha ISO y reglas cambiadas 5, 7, 10, 11, 25, 26, más la 33 agregada y el comando ampliado) y en la sección "Procedencia" de `.claude/skills/confluence-docs/templates.md` (fecha y secciones cambiadas: sección sin número nueva, §2, §3, §7, §8), según D16 y la regla 09
+- [X] T038 Ejecutar completo `specs/003-concision-confluence-docs/quickstart.md` (§1 a §10) sobre el estado final de `.claude/skills/confluence-docs/`: barrido corporativo, greps, comando sobre fixtures y archivos normativos (autodetección), encabezados, "Lo que se conserva" (`git diff main` sin cambios en las filas 27-32, 4, 13, 23, 3, 21 y 6), auditorías y generaciones persistidas, punteros; corregir toda desviación sin declarar cubierto lo que quede fuera de alcance
+- [X] T039 Completar `specs/003-concision-confluence-docs/evidence/evidence.md` con E6 (corrida completa del quickstart, fecha y resultado por bloque), actualizar la memoria de continuidad del proyecto con el estado del feature 003, commitear con mensaje `docs: evidencia de validación del feature 003`, y reportar el cierre al dueño dejando push, PR y merge a su confirmación explícita (SC-008)
 
 ---
 

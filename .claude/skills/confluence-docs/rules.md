@@ -1,6 +1,6 @@
 # Reglas — Estándar de documentación
 
-Catálogo operativo de la skill `confluence-docs`. Fuente única y versionada: no se deriva leyendo `.claude/rules/` ni la constitución en cada invocación. Procedencia: réplica declarada del estándar madurado en un workspace anterior, portada y depurada el 06-09-2026 (feature `001-portar-skills-rules`). Regenerar este archivo cuando cambien las reglas del repositorio o la constitución.
+Catálogo operativo de la skill `confluence-docs`. Fuente única y versionada: no se deriva leyendo `.claude/rules/` ni la constitución en cada invocación. Procedencia: réplica declarada del estándar madurado en un workspace anterior, portada y depurada el 06-09-2026 (feature `001-portar-skills-rules`). Regenerar este archivo cuando cambien las reglas del repositorio o la constitución. Revisado el 15-09-2026 (feature `003-concision-confluence-docs`): reglas 5, 7, 10, 11, 25 y 26 reescritas; regla 33 agregada; comando de prosa ampliado.
 
 ## Cómo usar este archivo
 

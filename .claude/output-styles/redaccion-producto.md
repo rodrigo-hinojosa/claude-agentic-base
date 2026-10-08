@@ -1,6 +1,6 @@
 ---
 name: Redacción de producto
-description: Comunicación orientada a documentación de producto: clara, estructurada y sin jerga innecesaria. Modo no-ingeniería.
+description: "Comunicación orientada a documentación de producto: clara, estructurada y sin jerga innecesaria. Modo no-ingeniería."
 ---
 
 <!--

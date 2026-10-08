@@ -4,7 +4,7 @@ description: Commitear los cambios de la feature SDD activa, con staging acotado
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: claude-agentic-base
-  source: workspace de origen, skill speckit-git-commit (adaptada 2026-09-06; procedencia completa en specs/001-portar-skills-rules/research.md)
+  source: workspace de origen, skill speckit-git-commit (adaptada 2026-09-06; revisada 2026-10-08 con spec-kit v1.1.2: rama leída de git y feature.json fuera del staging; procedencia completa en specs/001-portar-skills-rules/research.md)
 ---
 
 # Commit de la feature activa
@@ -13,7 +13,7 @@ Crea un commit acotado a la feature SDD en curso. No hace `push` ni abre PR: eso
 
 ## 1. Resolver la feature activa
 
-Ejecuta `.specify/scripts/bash/check-prerequisites.sh --json --paths-only` y toma `FEATURE_DIR` y `BRANCH`.
+Ejecuta `.specify/scripts/bash/check-prerequisites.sh --json --paths-only` y toma `FEATURE_DIR`. La rama se lee de git con `git branch --show-current`: el `BRANCH` que devuelve el script es el nombre del directorio de la feature, no la rama.
 
 Si la rama es `main`, **detente**: las features SDD no se commitean en la línea base (ver `.claude/rules/05-ramas-y-flujo-sdd.md`). Informa y ofrece crear la rama `<NNN-slug>`.
 
@@ -23,7 +23,7 @@ Stagea **solo** lo que pertenece a la feature:
 
 - `specs/<NNN-slug>/` completo, salvo lo que el `.gitignore` excluya.
 - Los archivos que la feature declara tocar. Léelos de la sección "Project Structure" o equivalente de su `plan.md`; si el plan no los enumera, dedúcelos de `tasks.md`.
-- `.specify/feature.json` y `CLAUDE.md` cuando la feature los haya actualizado como punteros.
+- `CLAUDE.md` cuando la feature lo haya actualizado como puntero. `.specify/feature.json` no entra: es estado local de cada copia y `.specify/.gitignore` lo excluye.
 
 **Nunca** uses `git add -A` ni `git add .`.
 

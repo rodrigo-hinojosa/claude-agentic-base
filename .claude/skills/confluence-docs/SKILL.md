@@ -1,7 +1,7 @@
 ---
 name: confluence-docs
 description: Aplica el estándar de documentación personal sobre Confluence en vivo y sobre archivos del repo, en cuatro modos — genera un entregable conforme, audita uno existente contra el estándar, consulta qué reglas y plantilla aplican a un tipo, y publica (crea o actualiza) páginas del espacio configurado con gate de aprobación. Úsala para producir o validar doc técnica, ADR, bitácoras, resúmenes o artefactos SDD. El tipo ticket pertenece a la skill jira-management.
-argument-hint: [genera|audita|consulta|publica] + tipo de entregable + insumo (tema, URL o id de página, ruta de archivo o texto)
+argument-hint: "[genera|audita|consulta|publica] + tipo de entregable + insumo (tema, URL o id de página, ruta de archivo o texto)"
 allowed-tools: Read, Grep, Glob, Write, Edit, mcp__atlassian__getAccessibleAtlassianResources, mcp__atlassian__getConfluencePage, mcp__atlassian__getConfluencePageDescendants, mcp__atlassian__getConfluenceSpaces, mcp__atlassian__searchConfluenceUsingCql, mcp__atlassian__createConfluencePage, mcp__atlassian__updateConfluencePage
 ---
 

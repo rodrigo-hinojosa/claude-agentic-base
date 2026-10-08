@@ -1,7 +1,7 @@
 ---
 name: jira-management
 description: Administra el tablero Jira del proyecto en seis modos — redactar un ticket de gestión con plantilla estándar, crear y mover issues con gate de aprobación y resolución en vivo de campos y transiciones, editar campos de issues existentes con gate por operación, auditar issues indicados contra el estándar, y consultar el trabajo por estado o por label sin devolver vacíos falsos. Úsala para escribir, crear, mover, editar o consultar tickets del tablero del proyecto. Requiere configurar los parámetros por proyecto en su primera adopción.
-argument-hint: [redacta|crea|mueve|edita|audita|consulta] + insumo (descripción del trabajo, clave de issue, estado destino, campo y valor, o label)
+argument-hint: "[redacta|crea|mueve|edita|audita|consulta] + insumo (descripción del trabajo, clave de issue, estado destino, campo y valor, o label)"
 allowed-tools: Read, Grep, Glob, mcp__atlassian__getAccessibleAtlassianResources, mcp__atlassian__getVisibleJiraProjects, mcp__atlassian__getJiraProjectIssueTypesMetadata, mcp__atlassian__getJiraIssue, mcp__atlassian__searchJiraIssuesUsingJql, mcp__atlassian__getJiraIssueTypeMetaWithFields, mcp__atlassian__getTransitionsForJiraIssue, mcp__atlassian__createJiraIssue, mcp__atlassian__transitionJiraIssue, mcp__atlassian__editJiraIssue
 ---
 

@@ -26,3 +26,8 @@ __pycache__/
 .env
 .env.*
 *.log
+
+# Cachés por máquina del CLI de spec-kit (catálogos de integraciones, workflows y presets)
+.specify/integrations/.cache/
+.specify/workflows/.cache/
+.specify/presets/.cache/

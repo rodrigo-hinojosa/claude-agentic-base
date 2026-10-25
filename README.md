@@ -22,7 +22,7 @@ Configuración reutilizable de Claude Code empaquetada como **una sola carpeta `
 | `.claude/output-styles/` | Sí | Estilos `socio-estrategico` y `redaccion-producto` |
 | `.claude/commands/` | Sí | README: formato de comandos heredado (se recomienda skills) |
 | `.claude/workflows/` | Sí | README: cómo se generan y guardan los dynamic workflows |
-| `.specify/` | Sí | Andamiaje de spec-kit v1.1.2 (templates, scripts, memoria de constitución). `feature.json` es estado local de cada copia y no se versiona |
+| `.specify/` | Sí | Andamiaje de spec-kit v1.2.3 (templates, scripts, memoria de constitución). `feature.json` es estado local de cada copia y no se versiona |
 | `specs/` | Sí | Trazas SDD por feature (`<NNN-slug>/`: spec, plan, tasks, evidencia) |
 
 ### Raíz del repo (acompañan a `.claude/`)
@@ -101,7 +101,7 @@ Las skills utilitarias (`/ticket`, `/resumen`, `/documentar`, `/bitacora`, `/dec
 
 ### Flujo SDD (spec-kit)
 
-El repo integra spec-kit v1.1.2 con sus skills `speckit-*`: `constitution`, `specify`, `clarify`, `plan`, `tasks`, `analyze`, `checklist`, `implement`, `converge`, `taskstoissues`. Cada feature nace con `/speckit-specify`, vive en su rama `<NNN-slug>` y queda trazada en `specs/<NNN-slug>/` (regla `05-ramas-y-flujo-sdd.md`).
+El repo integra spec-kit v1.2.3 con sus skills `speckit-*`: `constitution`, `specify`, `clarify`, `plan`, `tasks`, `analyze`, `checklist`, `implement`, `converge`, `taskstoissues` (esta última la declara deprecada el propio motor desde 1.2.3 en favor de su extensión `github`, que la base no instala). Cada feature nace con `/speckit-specify`, vive en su rama `<NNN-slug>` y queda trazada en `specs/<NNN-slug>/` (regla `05-ramas-y-flujo-sdd.md`).
 
 ## Subagentes incluidos
 
